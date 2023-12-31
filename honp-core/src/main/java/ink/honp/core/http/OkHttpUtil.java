@@ -175,6 +175,17 @@ public abstract class OkHttpUtil {
         HTTP_CLIENT.interceptors().addAll(interceptors);
     }
 
+    public static void setLevel(@NonNull OkHttpLogInterceptor.Level level) {
+        List<Interceptor> interceptors = HTTP_CLIENT.interceptors();
+        interceptors.stream()
+                .filter(OkHttpLogInterceptor.class::isInstance)
+                .findFirst()
+                .ifPresent(interceptor -> {
+                    OkHttpLogInterceptor logInterceptor = (OkHttpLogInterceptor) interceptor;
+                    logInterceptor.setLevel(level);
+                });
+    }
+
     private OkHttpUtil() {
 
     }

@@ -24,7 +24,7 @@ public class OkHttpLogInterceptor implements Interceptor {
 
     private static final String TAG = "okhttp";
 
-    private final Level level;
+    private Level level;
 
     public OkHttpLogInterceptor() {
         this(Level.BASIC);
@@ -50,6 +50,9 @@ public class OkHttpLogInterceptor implements Interceptor {
         return response;
     }
 
+    public void setLevel(Level level) {
+        this.level = level;
+    }
 
     private String formatLogMessage(Request request, Response response) {
         try {
