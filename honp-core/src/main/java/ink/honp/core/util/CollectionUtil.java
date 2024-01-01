@@ -1,5 +1,7 @@
 package ink.honp.core.util;
 
+import lombok.experimental.UtilityClass;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,11 +10,8 @@ import java.util.Map;
  * @author jeff chen
  * @since 1.0.0
  */
-public abstract class CollectionUtil {
-
-    private CollectionUtil() {
-
-    }
+@UtilityClass
+public class CollectionUtil {
 
     /**
      * 默认的 Map 初始化大小

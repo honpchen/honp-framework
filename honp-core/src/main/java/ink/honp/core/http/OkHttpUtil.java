@@ -8,6 +8,7 @@ import ink.honp.core.http.response.ResponseHandler;
 import ink.honp.core.http.response.StringResponseHandler;
 import ink.honp.core.util.JacksonUtil;
 import lombok.NonNull;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -32,7 +33,8 @@ import java.util.concurrent.TimeUnit;
  * date    2023/12/28 16:46
  */
 @Slf4j
-public abstract class OkHttpUtil {
+@UtilityClass
+public class OkHttpUtil {
 
     /** http 连接超时时间 **/
     private static final int CONN_TIMEOUT_SEC = 2 * 60;
@@ -185,11 +187,4 @@ public abstract class OkHttpUtil {
                     logInterceptor.setLevel(level);
                 });
     }
-
-    private OkHttpUtil() {
-
-    }
-
-
-
 }

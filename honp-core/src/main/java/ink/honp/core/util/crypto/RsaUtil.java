@@ -1,6 +1,7 @@
 package ink.honp.core.util.crypto;
 
 import ink.honp.core.exception.CryptoException;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.crypto.Cipher;
@@ -19,16 +20,13 @@ import java.util.Map;
  * @since 1.0.0
  */
 @Slf4j
-public abstract class RsaUtil {
+@UtilityClass
+public class RsaUtil {
 
 
     private static final String RSA = "RSA";
     private static final int KEY_SIZE = 1024;
     private static final String CIPHER_ALGORITHM = "RSA/ECB/PKCS1Padding";
-
-    private RsaUtil() {
-
-    }
 
     /**
      * RSA公钥加密

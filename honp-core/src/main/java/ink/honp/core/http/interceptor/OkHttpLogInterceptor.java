@@ -22,15 +22,21 @@ import java.util.Objects;
 @Slf4j
 public class OkHttpLogInterceptor implements Interceptor {
 
-    private static final String TAG = "okhttp";
+    private static final String DEFAULT_TAG = "okhttp";
 
+    private String tag;
     private Level level;
 
     public OkHttpLogInterceptor() {
-        this(Level.BASIC);
+        this(DEFAULT_TAG, Level.BASIC);
     }
 
     public OkHttpLogInterceptor(Level level) {
+        this(DEFAULT_TAG, level);
+    }
+
+    public OkHttpLogInterceptor(String tag, Level level) {
+        this.tag = tag;
         this.level = level;
     }
 
@@ -45,7 +51,7 @@ public class OkHttpLogInterceptor implements Interceptor {
         }
 
         String logMessage = formatLogMessage(request, response);
-        log.info("{} {}", TAG, logMessage);
+        log.info("{} {}", tag, logMessage);
 
         return response;
     }
@@ -74,7 +80,7 @@ public class OkHttpLogInterceptor implements Interceptor {
             return builder.toString();
 
         }catch (Exception ex) {
-            log.error("{} format log message error.", TAG, ex);
+            log.error("{} format log message error.", DEFAULT_TAG, ex);
             return StringUtils.EMPTY;
         }
     }

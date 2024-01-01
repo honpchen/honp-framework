@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>honp-core</module>
+        <module>honp-wx</module>
     </modules>
 
     <properties>

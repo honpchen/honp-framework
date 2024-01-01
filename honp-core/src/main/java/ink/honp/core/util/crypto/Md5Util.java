@@ -1,6 +1,7 @@
 package ink.honp.core.util.crypto;
 
 import ink.honp.core.exception.CryptoException;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.StandardCharsets;
@@ -12,13 +13,10 @@ import java.security.MessageDigest;
  * @since 1.0.0
  */
 @Slf4j
-public abstract class Md5Util {
+@UtilityClass
+public class Md5Util {
 
     private static final String MD5 = "MD5";
-
-    private Md5Util() {
-
-    }
 
     /**
      * 生成文件摘要，转为16进制输出
