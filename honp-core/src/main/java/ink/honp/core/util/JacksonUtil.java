@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.NonNull;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -19,13 +20,10 @@ import java.util.Objects;
  * date    2023/11/28 16:35
  */
 @Slf4j
-public abstract class JacksonUtil {
+@UtilityClass
+public class JacksonUtil {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
-
-    private JacksonUtil() {
-        objectMapperConfig();
-    }
 
     /**
      * json 字符内容转对象

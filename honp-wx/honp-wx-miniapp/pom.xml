@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>honp-wx</artifactId>
+        <groupId>ink.honpframework</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>honp-wx-miniapp</artifactId>
+    <description>微信小程序模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>ink.honpframework</groupId>
+            <artifactId>honp-wx-core</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

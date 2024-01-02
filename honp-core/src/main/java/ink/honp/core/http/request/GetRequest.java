@@ -17,6 +17,10 @@ public class GetRequest extends AbstractRequest {
     private final String url;
     private final Map<String, String> headers;
 
+    public GetRequest(@NonNull String url) {
+        this(url, null);
+    }
+
     public GetRequest(@NonNull String url, Map<String, String> headers) {
         this.url = url;
         this.headers = headers;
