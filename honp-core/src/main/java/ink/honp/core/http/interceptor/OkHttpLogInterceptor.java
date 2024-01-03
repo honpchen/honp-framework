@@ -24,7 +24,7 @@ public class OkHttpLogInterceptor implements Interceptor {
 
     private static final String DEFAULT_TAG = "okhttp";
 
-    private String tag;
+    private final String tag;
     private Level level;
 
     public OkHttpLogInterceptor() {
@@ -51,7 +51,7 @@ public class OkHttpLogInterceptor implements Interceptor {
         }
 
         String logMessage = formatLogMessage(request, response);
-        log.info("{} {}", tag, logMessage);
+        log.info("[{}] {}", tag, logMessage);
 
         return response;
     }
@@ -80,7 +80,7 @@ public class OkHttpLogInterceptor implements Interceptor {
             return builder.toString();
 
         }catch (Exception ex) {
-            log.error("{} format log message error.", DEFAULT_TAG, ex);
+            log.error("[{}] format log message error.", tag, ex);
             return StringUtils.EMPTY;
         }
     }

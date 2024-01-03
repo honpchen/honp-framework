@@ -35,7 +35,7 @@ public class WxSimpleResponseHandler implements WxResponseHandler<String> {
         }
 
         JsonNode errcodeNode = dataNode.get(WxConstant.ERR_CODE);
-        if (Objects.isNull(errcodeNode) || errcodeNode.asInt() == 0) {
+        if (Objects.isNull(errcodeNode) || WxConstant.SUCCESS_CODE == errcodeNode.asInt()) {
             return content;
         }
         throw new WxException(errcodeNode.asInt(), dataNode.get(WxConstant.ERR_MSG).asText());

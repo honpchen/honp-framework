@@ -13,4 +13,7 @@ public class WxConstant {
 
     public static final String ERR_CODE = "errcode";
     public static final String ERR_MSG = "errmsg";
+    public static final String ACCESS_TOKEN = "access_token";
+
+
 }

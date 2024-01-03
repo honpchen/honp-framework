@@ -2,16 +2,15 @@ package ink.honp.core.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -24,6 +23,17 @@ import java.util.Objects;
 public class JacksonUtil {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
+    static {
+        MAPPER.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        // 取消默认转换timestamps形式
+        MAPPER.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS,false);
+        // 忽略空Bean转json的错误
+        MAPPER.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS,false);
+        // 忽略在json字符串中存在，但是在java对象中不存在对应属性的情况。防止错误
+        MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
+        // 支持 java.time.LocalDateTime 类型
+        MAPPER.registerModule(new JavaTimeModule());
+    }
 
     /**
      * json 字符内容转对象
@@ -63,6 +73,25 @@ public class JacksonUtil {
     }
 
     /**
+     * json 字符串转List数组
+     * @param text   json 字符串
+     * @param clz    元素类型
+     * @return List<T> 转换失败返回空数组
+     */
+    public static <T> List<T> toList(String text, Class<T> clz) {
+        if (StringUtils.isNotBlank(text)) {
+            JavaType listJavaType = MAPPER.getTypeFactory().constructParametricType(List.class, clz);
+            try {
+                return MAPPER.readValue(text, listJavaType);
+            } catch (JsonProcessingException ex) {
+                handleProcessingException(ex);
+            }
+        }
+
+        return Collections.emptyList();
+    }
+
+    /**
      * 读取 json 字符串，返回 JsonNode 对象
      * @param jonsText json 字符串
      * @return JsonNode 对象
@@ -81,17 +110,5 @@ public class JacksonUtil {
 
     private static void handleProcessingException(JsonProcessingException ex) {
         log.warn("Json process error", ex);
-    }
-
-    private void objectMapperConfig() {
-        MAPPER.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        // 取消默认转换timestamps形式
-        MAPPER.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS,false);
-        // 忽略空Bean转json的错误
-        MAPPER.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS,false);
-        // 忽略在json字符串中存在，但是在java对象中不存在对应属性的情况。防止错误
-        MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
-        // 支持 java.time.LocalDateTime 类型
-        MAPPER.registerModule(new JavaTimeModule());
     }
 }

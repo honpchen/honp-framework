@@ -7,7 +7,7 @@ package ink.honp.core.constant;
  */
 public class SymbolicConstant {
 
-    public static final String AND = "&";
+    public static final String AMPLE = "&";
     public static final String COMMA = ",";
     public static final String COLON = ":";
     public static final String EQUAL = "=";

@@ -122,11 +122,11 @@ public class OkHttpUtil {
 
             builder.append(name).append(SymbolicConstant.EQUAL)
                     .append(URLEncoder.encode(rootNode.get(name).asText(), StandardCharsets.UTF_8))
-                    .append(SymbolicConstant.AND);
+                    .append(SymbolicConstant.AMPLE);
         }
         String parameters = builder.deleteCharAt(builder.length() - 1).toString();
 
-        return url.contains(SymbolicConstant.QUESTION) ? url + SymbolicConstant.AND + parameters
+        return url.contains(SymbolicConstant.QUESTION) ? url + SymbolicConstant.AMPLE + parameters
                 : url + SymbolicConstant.QUESTION + parameters;
     }
 
