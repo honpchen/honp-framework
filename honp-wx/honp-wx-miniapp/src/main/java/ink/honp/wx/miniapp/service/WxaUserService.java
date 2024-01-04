@@ -1,10 +1,10 @@
 package ink.honp.wx.miniapp.service;
 
-import ink.honp.wx.miniapp.entity.request.WxaUserGetPaidUnionidRequest;
-import ink.honp.wx.miniapp.entity.request.WxaPhoneNumberGetRequest;
-import ink.honp.wx.miniapp.entity.response.WxaUserOpenId;
-import ink.honp.wx.miniapp.entity.response.WxaUserPhoneInfo;
-import ink.honp.wx.miniapp.entity.response.WxaUserUnionId;
+import ink.honp.wx.miniapp.entity.request.user.WxaUserGetPaidUnionidRequest;
+import ink.honp.wx.miniapp.entity.request.user.WxaPhoneNumberGetRequest;
+import ink.honp.wx.miniapp.entity.response.user.WxaUserOpenIdResponse;
+import ink.honp.wx.miniapp.entity.response.user.WxaUserPhoneInfoResponse;
+import ink.honp.wx.miniapp.entity.response.user.WxaUserUnionIdResponse;
 import lombok.NonNull;
 
 /**
@@ -19,7 +19,7 @@ public interface WxaUserService extends WxaService {
      * @param code 通过 wx.pluginLogin 获得的插件用户标志凭证 code，有效时间为5分钟，一个 code 只能获取一次 openpid
      * @return 插件用户的唯一标识
      */
-    WxaUserOpenId getPluginOpenPId(@NonNull String code);
+    WxaUserOpenIdResponse getPluginOpenPId(@NonNull String code);
 
     /**
      * 支付后获取 Unionid
@@ -31,7 +31,7 @@ public interface WxaUserService extends WxaService {
      * @param paidUnionidRequest 请求参数
      * @return 用户 unionid
      */
-    WxaUserUnionId getPaidUnionid(WxaUserGetPaidUnionidRequest paidUnionidRequest);
+    WxaUserUnionIdResponse getPaidUnionid(WxaUserGetPaidUnionidRequest paidUnionidRequest);
 
 
     /**
@@ -43,5 +43,5 @@ public interface WxaUserService extends WxaService {
      * @param phoneNumberGetRequest 请求参数
      * @return 用户手机号
      */
-    WxaUserPhoneInfo getPhoneNumber(WxaPhoneNumberGetRequest phoneNumberGetRequest);
+    WxaUserPhoneInfoResponse getPhoneNumber(WxaPhoneNumberGetRequest phoneNumberGetRequest);
 }

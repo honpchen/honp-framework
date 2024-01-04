@@ -1,14 +1,17 @@
-package ink.honp.wx.miniapp.entity.response;
+package ink.honp.wx.miniapp.entity.response.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import ink.honp.wx.core.entity.response.WxResponse;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author jeffchen
  * date    2024/01/03 17:04
  */
 @Data
-public class WxaSessionInfo {
+@EqualsAndHashCode(callSuper = true)
+public class WxaSessionInfoResponse extends WxResponse {
 
     /** 会话密钥 **/
     @JsonProperty("session_key")

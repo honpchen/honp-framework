@@ -1,5 +1,6 @@
-package ink.honp.wx.miniapp.entity.request;
+package ink.honp.wx.miniapp.entity.request.user;
 
+import ink.honp.wx.core.entity.request.WxRequest;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -9,7 +10,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class WxaPhoneNumberGetRequest {
+public class WxaPhoneNumberGetRequest implements WxRequest {
 
     /**
      * 手机号获取凭证, 必填

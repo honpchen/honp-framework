@@ -1,6 +1,7 @@
-package ink.honp.wx.miniapp.entity.request;
+package ink.honp.wx.miniapp.entity.request.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import ink.honp.wx.core.entity.request.WxRequest;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -10,7 +11,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class WxaUserGetPaidUnionidRequest {
+public class WxaUserGetPaidUnionidRequest implements WxRequest {
 
     /**
      * 支付用户唯一标识，必填

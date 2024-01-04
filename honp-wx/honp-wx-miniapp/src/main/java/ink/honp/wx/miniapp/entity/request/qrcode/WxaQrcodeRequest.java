@@ -1,6 +1,7 @@
-package ink.honp.wx.miniapp.entity.request;
+package ink.honp.wx.miniapp.entity.request.qrcode;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import ink.honp.wx.core.entity.request.WxRequest;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -9,7 +10,7 @@ import lombok.experimental.Accessors;
  * date    2024/01/03 18:06
  */
 @Data
-public class WxaQrcodeRequest {
+public class WxaQrcodeRequest implements WxRequest {
 
     /**
      * 二维码的宽度，单位：px。最小 280px，最大 1280px

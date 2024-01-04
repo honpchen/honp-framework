@@ -1,7 +1,8 @@
-package ink.honp.wx.miniapp.entity.request;
+package ink.honp.wx.miniapp.entity.request.qrcode;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
@@ -10,6 +11,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
 public class WxaQrcodeUnlimitedRequest extends WxaQrcodeRequest {
 
     /**

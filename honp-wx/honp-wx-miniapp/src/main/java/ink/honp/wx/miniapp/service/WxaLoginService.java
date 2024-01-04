@@ -1,6 +1,6 @@
 package ink.honp.wx.miniapp.service;
 
-import ink.honp.wx.miniapp.entity.response.WxaSessionInfo;
+import ink.honp.wx.miniapp.entity.response.user.WxaSessionInfoResponse;
 
 /**
  * @author jeffchen
@@ -14,5 +14,5 @@ public interface WxaLoginService extends WxaService {
      * @param jsCode 登录时获取的 code，可通过wx.login获取
      * @return session info
      */
-    WxaSessionInfo code2Session(String jsCode);
+    WxaSessionInfoResponse code2Session(String jsCode);
 }

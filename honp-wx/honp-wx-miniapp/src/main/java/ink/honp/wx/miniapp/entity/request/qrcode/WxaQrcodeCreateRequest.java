@@ -1,15 +1,16 @@
-package ink.honp.wx.miniapp.entity.request;
+package ink.honp.wx.miniapp.entity.request.qrcode;
 
+import ink.honp.wx.core.entity.request.WxRequest;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
  * @author jeffchen
- * date    2024/01/03 18:15
+ * date    2024/01/03 18:24
  */
 @Data
 @Accessors(chain = true)
-public class WxaQrcodeGetRequest extends WxaQrcodeRequest {
+public class WxaQrcodeCreateRequest implements WxRequest {
 
     /**
      * <pre>
@@ -19,4 +20,6 @@ public class WxaQrcodeGetRequest extends WxaQrcodeRequest {
      * </pre>
      */
     private String path;
+
+    private Integer width;
 }

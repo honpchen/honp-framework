@@ -1,22 +1,21 @@
-package ink.honp.wx.miniapp.entity.request;
+package ink.honp.wx.core.entity.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ink.honp.wx.core.constant.WxGrantType;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
  * @author jeffchen
- * date    2024/01/02 11:38
+ * date    2024/01/04 10:06
  */
 @Data
 @Accessors(chain = true)
-public class WxaAccessTokenRequest {
+public class WxAccessTokenRequest implements WxRequest {
 
     private String appid;
 
     private String secret;
 
     @JsonProperty("grant_type")
-    private String grantType = WxGrantType.CLIENT_CREDENTIAL;
+    private String grantType;
 }

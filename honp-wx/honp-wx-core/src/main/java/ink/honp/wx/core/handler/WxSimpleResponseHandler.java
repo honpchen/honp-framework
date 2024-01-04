@@ -1,8 +1,7 @@
 package ink.honp.wx.core.handler;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import ink.honp.core.util.JacksonUtil;
-import ink.honp.wx.core.constant.WxConstant;
+import ink.honp.wx.core.entity.response.WxResponse;
 import ink.honp.wx.core.exception.WxException;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
@@ -29,15 +28,13 @@ public class WxSimpleResponseHandler implements WxResponseHandler<String> {
             return StringUtils.EMPTY;
         }
 
-        JsonNode dataNode = JacksonUtil.readTree(content);
-        if (Objects.isNull(dataNode)) {
+        WxResponse wxRep = JacksonUtil.toBean(content, WxResponse.class);
+        if (Objects.isNull(wxRep)) {
             return StringUtils.EMPTY;
         }
-
-        JsonNode errcodeNode = dataNode.get(WxConstant.ERR_CODE);
-        if (Objects.isNull(errcodeNode) || WxConstant.SUCCESS_CODE == errcodeNode.asInt()) {
+        if (wxRep.isSuccess()) {
             return content;
         }
-        throw new WxException(errcodeNode.asInt(), dataNode.get(WxConstant.ERR_MSG).asText());
+        throw new WxException(wxRep.getErrcode(), wxRep.getErrmsg());
     }
 }

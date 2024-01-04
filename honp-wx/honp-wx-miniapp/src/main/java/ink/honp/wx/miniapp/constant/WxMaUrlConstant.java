@@ -32,9 +32,34 @@ public class WxMaUrlConstant extends WxUrlConstant {
      * 小程序码相关 API
      */
     public interface Qrcode {
-
-        String GET_QRCODE = "/wxa/getwxacode";
-        String GET_UNLIMITED_QRCODE = "/wxa/getwxacodeunlimit";
+        String GET_QRCODE = API_BASE_URL + "/wxa/getwxacode";
+        String GET_UNLIMITED_QRCODE = API_BASE_URL + "/wxa/getwxacodeunlimit";
         String CREATE_QRCODE = API_BASE_URL + "/cgi-bin/wxaapp/createwxaqrcode";
+    }
+
+    /**
+     * URL Scheme
+     */
+    public interface Scheme {
+        String GENERATE_NFC_SCHEME = API_BASE_URL + "/wxa/generatenfcscheme";
+        String GENERATE_SCHEME = API_BASE_URL + "/wxa/generatescheme";
+        String QUERY_SCHEME = API_BASE_URL + "/wxa/queryscheme";
+    }
+
+    /**
+     * URL Link
+     */
+    public interface UrlLink {
+        String GENERATE_URL_LINK = API_BASE_URL + "/wxa/generate_urllink";
+        String QUERY_URL_LINK = API_BASE_URL + "/wxa/query_urllink";
+        String GENERATE_SHORT_LINK = API_BASE_URL + "/wxa/genwxashortlink";
+    }
+
+    /**
+     * 消息相关 - 动态消息
+     */
+    public interface ActivityMessage {
+        String CREATE_ACTIVITY_ID = API_BASE_URL + "/cgi-bin/message/wxopen/activityid/create";
+        String UPDATE_MSG = API_BASE_URL + "/cgi-bin/message/wxopen/updatablemsg/send";
     }
 }

@@ -3,7 +3,10 @@ package ink.honp.wx.miniapp.client.impl;
 import ink.honp.core.constant.SymbolicConstant;
 import ink.honp.core.util.JacksonUtil;
 import ink.honp.core.util.ThreadUtil;
+import ink.honp.wx.core.client.impl.WxAbstractClientImpl;
 import ink.honp.wx.core.constant.WxConstant;
+import ink.honp.wx.core.constant.WxGrantType;
+import ink.honp.wx.core.entity.request.WxAccessTokenRequest;
 import ink.honp.wx.core.entity.WxTokenInfo;
 import ink.honp.wx.core.exception.WxError;
 import ink.honp.wx.core.exception.WxException;
@@ -11,16 +14,13 @@ import ink.honp.wx.core.executor.WxRequestExecutor;
 import ink.honp.wx.core.executor.WxSimplePostRequestExecutor;
 import ink.honp.wx.core.handler.WxResponseHandler;
 import ink.honp.wx.core.handler.WxSimpleResponseHandler;
-import ink.honp.wx.core.client.impl.WxAbstractClientImpl;
+import ink.honp.wx.miniapp.client.WxaClient;
 import ink.honp.wx.miniapp.config.WxaConfig;
 import ink.honp.wx.miniapp.constant.WxMaUrlConstant;
-import ink.honp.wx.miniapp.entity.request.WxaAccessTokenRequest;
-import ink.honp.wx.miniapp.client.WxaClient;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
-import java.lang.annotation.Target;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 
@@ -157,9 +157,10 @@ public class WxaClientImpl extends WxAbstractClientImpl implements WxaClient {
     }
 
     private WxTokenInfo doGetAccessToken() {
-        WxaAccessTokenRequest tokenRequest = new WxaAccessTokenRequest()
+        WxAccessTokenRequest tokenRequest = new WxAccessTokenRequest()
                 .setAppid(wxaConfig.getAppid())
-                .setSecret(wxaConfig.getSecret());
+                .setSecret(wxaConfig.getSecret())
+                .setGrantType(WxGrantType.CLIENT_CREDENTIAL);
 
         WxSimplePostRequestExecutor postRequestExecutor = new WxSimplePostRequestExecutor(getOkHttpClient());
         WxSimpleResponseHandler responseHandler = new WxSimpleResponseHandler();
