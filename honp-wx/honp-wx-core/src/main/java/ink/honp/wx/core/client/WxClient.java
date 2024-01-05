@@ -1,5 +1,6 @@
 package ink.honp.wx.core.client;
 
+import ink.honp.wx.core.handler.WxResponseHandler;
 import okhttp3.OkHttpClient;
 
 import java.util.List;
@@ -19,6 +20,8 @@ public interface WxClient {
     String post(String url, Object data);
 
     <T> T post(String url, Object data, Class<T> repClz);
+
+    <T> T post(String url, Object data, WxResponseHandler<T> responseHandler);
 
     OkHttpClient getOkHttpClient();
 

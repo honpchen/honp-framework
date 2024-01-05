@@ -29,7 +29,6 @@ public class WxaDefaultConfig implements WxaConfig {
 
     private final ReentrantLock accessTokenLock = new ReentrantLock();
 
-
     @Override
     public boolean accessTokenNotExpired() {
         return StringUtils.isNotBlank(accessToken)

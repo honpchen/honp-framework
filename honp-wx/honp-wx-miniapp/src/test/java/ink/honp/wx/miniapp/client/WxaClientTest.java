@@ -1,10 +1,13 @@
 package ink.honp.wx.miniapp.client;
 
+import ink.honp.core.http.interceptor.OkHttpLogInterceptor;
 import ink.honp.core.util.JacksonUtil;
 import ink.honp.core.util.ThreadUtil;
+import ink.honp.wx.core.exception.WxException;
 import ink.honp.wx.miniapp.client.impl.WxaClientImpl;
 import ink.honp.wx.miniapp.config.WxaConfig;
 import ink.honp.wx.miniapp.config.WxaDefaultConfig;
+import ink.honp.wx.miniapp.entity.response.user.WxaSessionInfoResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -23,8 +26,8 @@ import java.util.Set;
 @Slf4j
 class WxaClientTest {
 
-    private static final String APPID = "xxxxxx";
-    private static final String SECRET = "xxxxxx";
+    private static final String APPID = "wx53b2b2472696934b";
+    private static final String SECRET = "a6be31d510906a029f3796d9349f186a";
 
     @Test
     @DisplayName("并发获取 accessToken")
@@ -64,4 +67,35 @@ class WxaClientTest {
 
         log.info("Wx miniApp accessToken:{}", accessToken);
     }
+
+    @Test
+    void testCode2Session() {
+        WxaConfig wxaConfig = new WxaDefaultConfig()
+               .setAppid(APPID)
+               .setSecret(SECRET);
+
+        String jsCode = "0b1OWGGa18HXEG0DUmJa1jcMIh4OWGGg";
+
+        WxaClient wxaClient = new WxaClientImpl(wxaConfig);
+        WxaSessionInfoResponse sessionInfo = wxaClient.code2Session(jsCode);
+
+        Assertions.assertNotNull(sessionInfo);
+        log.info("Wx miniApp sessionInfo:{}", JacksonUtil.toJson(sessionInfo));
+    }
+
+    @Test
+    @DisplayName("错误 jsCode 校验")
+    void testCode2SessionWithErrorJsCode() {
+        WxaConfig wxaConfig = new WxaDefaultConfig()
+                .setAppid(APPID)
+                .setSecret(SECRET);
+
+        String jsCode = "0b1OWGGa18HXEG0DUmJa1jcMIh4OWGGg";
+
+        WxaClient wxaClient = new WxaClientImpl(wxaConfig);
+        WxException wxException = Assertions.assertThrows(WxException.class, () -> wxaClient.code2Session(jsCode));
+
+        log.info("WXA jsCode error [code:{}, msg:{}]", wxException.getCode(), wxException.getMessage());
+    }
+
 }

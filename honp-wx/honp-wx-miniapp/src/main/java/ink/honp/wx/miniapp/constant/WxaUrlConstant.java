@@ -8,7 +8,7 @@ import lombok.experimental.UtilityClass;
  * date    2024/01/02 11:42
  */
 @UtilityClass
-public class WxMaUrlConstant extends WxUrlConstant {
+public class WxaUrlConstant extends WxUrlConstant {
 
     public static final String STABLE_TOKEN = API_BASE_URL + "/cgi-bin/stable_token";
 
@@ -16,7 +16,7 @@ public class WxMaUrlConstant extends WxUrlConstant {
      * 小程序登录相关 API
      */
     public interface Login {
-        String CODE_2_SESSION = API_BASE_URL + "/sns/jscode2session";
+        String CODE_2_SESSION = API_BASE_URL + "/sns/jscode2session?appid=%s&secret=%s&js_code=%s&=grant_type=authorization_code";
     }
 
     /**

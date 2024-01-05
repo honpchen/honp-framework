@@ -1,5 +1,6 @@
 package ink.honp.wx.miniapp.service;
 
+import ink.honp.wx.core.entity.response.WxByteResponse;
 import ink.honp.wx.miniapp.entity.request.qrcode.WxaQrcodeCreateRequest;
 import ink.honp.wx.miniapp.entity.request.qrcode.WxaQrcodeGetRequest;
 import ink.honp.wx.miniapp.entity.request.qrcode.WxaQrcodeUnlimitedRequest;
@@ -19,7 +20,7 @@ public interface WxaQrcodeService extends WxaService {
      * @param qrcodeGetRequest 请求参数
      * @return 图片二进制
      */
-    WxaImageBufferResponse getQrcode(WxaQrcodeGetRequest qrcodeGetRequest);
+    WxByteResponse getQrcode(WxaQrcodeGetRequest qrcodeGetRequest);
 
     /**
      * 获取不限制的小程序码
@@ -29,7 +30,7 @@ public interface WxaQrcodeService extends WxaService {
      * @param qrcodeUnlimitedRequest 请求参数
      * @return 图片二进制
      */
-    WxaImageBufferResponse getUnlimitedQrcode(WxaQrcodeUnlimitedRequest qrcodeUnlimitedRequest);
+    WxByteResponse getUnlimitedQrcode(WxaQrcodeUnlimitedRequest qrcodeUnlimitedRequest);
 
     /**
      * 获取小程序二维码
@@ -39,5 +40,5 @@ public interface WxaQrcodeService extends WxaService {
      * @param qrcodeCreateRequest 请求参数
      * @return 图片二进制
      */
-    WxaImageBufferResponse createQrcode(WxaQrcodeCreateRequest qrcodeCreateRequest);
+    WxByteResponse createQrcode(WxaQrcodeCreateRequest qrcodeCreateRequest);
 }

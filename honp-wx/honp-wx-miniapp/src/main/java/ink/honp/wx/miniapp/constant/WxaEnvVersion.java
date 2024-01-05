@@ -7,7 +7,7 @@ import lombok.experimental.UtilityClass;
  * date    2024/01/03 18:13
  */
 @UtilityClass
-public class WxMaEnvVersion {
+public class WxaEnvVersion {
 
     /**
      * 正式环境

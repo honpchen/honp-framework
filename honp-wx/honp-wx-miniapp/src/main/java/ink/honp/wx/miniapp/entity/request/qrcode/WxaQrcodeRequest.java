@@ -10,6 +10,7 @@ import lombok.experimental.Accessors;
  * date    2024/01/03 18:06
  */
 @Data
+@Accessors(chain = true)
 public class WxaQrcodeRequest implements WxRequest {
 
     /**

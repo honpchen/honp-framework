@@ -2,12 +2,13 @@ package ink.honp.wx.core.client.impl;
 
 import ink.honp.core.http.interceptor.OkHttpLogInterceptor;
 import ink.honp.core.util.JacksonUtil;
+import ink.honp.wx.core.client.WxClient;
+import ink.honp.wx.core.executor.WxGetRequestExecutor;
+import ink.honp.wx.core.executor.WxPostRequestExecutor;
 import ink.honp.wx.core.executor.WxRequestExecutor;
-import ink.honp.wx.core.executor.WxSimpleGetRequestExecutor;
-import ink.honp.wx.core.executor.WxSimplePostRequestExecutor;
 import ink.honp.wx.core.handler.WxResponseHandler;
 import ink.honp.wx.core.handler.WxSimpleResponseHandler;
-import ink.honp.wx.core.client.WxClient;
+import lombok.Getter;
 import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.StringUtils;
 
@@ -19,6 +20,7 @@ import java.util.concurrent.TimeUnit;
  * @author jeff chen
  * @since 2024-01-01 22:07
  */
+@Getter
 public abstract class WxAbstractClientImpl implements WxClient {
 
     private static final Integer TIMEOUT = 2 * 60;
@@ -30,18 +32,18 @@ public abstract class WxAbstractClientImpl implements WxClient {
             .addInterceptor(new OkHttpLogInterceptor(getClientTag(), OkHttpLogInterceptor.Level.BASIC))
             .build();
 
-    private final WxSimpleGetRequestExecutor defaultGetExecutor = new WxSimpleGetRequestExecutor(this.okHttpClient);
-    private final WxSimplePostRequestExecutor defaultPostExecutor = new WxSimplePostRequestExecutor(this.okHttpClient);
-    private final WxSimpleResponseHandler defaultResponseHandler = new WxSimpleResponseHandler();
+    private final WxGetRequestExecutor defaultGetExecutor = new WxGetRequestExecutor(this.okHttpClient);
+    private final WxPostRequestExecutor defaultPostExecutor = new WxPostRequestExecutor(this.okHttpClient);
+    private final WxSimpleResponseHandler responseHandler = new WxSimpleResponseHandler();
 
     @Override
     public String get(String url, Object queryParams) {
-        return execute(defaultGetExecutor, url, queryParams, defaultResponseHandler);
+        return execute(defaultGetExecutor, url, queryParams, responseHandler);
     }
 
     @Override
     public <T> T get(String url, Object queryParams, Class<T> repClz) {
-        String result = execute(defaultGetExecutor, url, queryParams, defaultResponseHandler);
+        String result = execute(defaultGetExecutor, url, queryParams, responseHandler);
         if (StringUtils.isBlank(result)) {
             return null;
         }
@@ -50,7 +52,7 @@ public abstract class WxAbstractClientImpl implements WxClient {
 
     @Override
     public <T> List<T> getList(String url, Object queryParams, Class<T> repClz) {
-        String result = execute(defaultGetExecutor, url, queryParams, defaultResponseHandler);
+        String result = execute(defaultGetExecutor, url, queryParams, responseHandler);
         if (StringUtils.isBlank(result)) {
             return Collections.emptyList();
         }
@@ -59,16 +61,21 @@ public abstract class WxAbstractClientImpl implements WxClient {
 
     @Override
     public String post(String url, Object data) {
-        return execute(defaultPostExecutor, url, data, defaultResponseHandler);
+        return execute(defaultPostExecutor, url, data, responseHandler);
     }
 
     @Override
     public <T> T post(String url, Object data, Class<T> repClz) {
-        String result = execute(defaultPostExecutor, url, data, defaultResponseHandler);
+        String result = execute(defaultPostExecutor, url, data, responseHandler);
         if (StringUtils.isBlank(result)) {
             return null;
         }
         return JacksonUtil.toBean(result, repClz);
+    }
+
+    @Override
+    public <T> T post(String url, Object data, WxResponseHandler<T> responseHandler) {
+        return execute(defaultPostExecutor, url, data, responseHandler);
     }
 
     /**
@@ -77,22 +84,16 @@ public abstract class WxAbstractClientImpl implements WxClient {
      * @param url           请求地址
      * @param data          请求数据
      * @param responseHandler 结果处理
-     * @param <E> 请求参数类型
-     * @param <R> 结果类型
+     * @param <T> 结果类型
      * @return -
      */
-    public abstract <E, R> R execute(WxRequestExecutor<E, R> executor, String url, E data, WxResponseHandler<R> responseHandler);
+    public abstract <T> T execute(WxRequestExecutor executor, String url, Object data, WxResponseHandler<T> responseHandler);
 
     /**
      * 获取客户端 tag
      * @return -
      */
     public abstract String getClientTag();
-
-    @Override
-    public OkHttpClient getOkHttpClient() {
-        return this.okHttpClient;
-    }
 
     @Override
     public void setOkHttpClient(OkHttpClient httpClient) {

@@ -2,6 +2,7 @@ package ink.honp.wx.miniapp.client;
 
 import ink.honp.wx.core.client.WxClient;
 import ink.honp.wx.miniapp.config.WxaConfig;
+import ink.honp.wx.miniapp.entity.response.user.WxaSessionInfoResponse;
 
 /**
  * 微信小程序端
@@ -22,4 +23,11 @@ public interface WxaClient extends WxClient {
      * @return access_token
      */
     String getAccessToken(boolean forceRefresh);
+
+    /**
+     * 登录凭证校验
+     * @param jsCode jsCode 登录时获取的 code，可通过wx.login获取
+     * @return WxaSessionInfoResponse
+     */
+    WxaSessionInfoResponse code2Session(String jsCode);
 }
