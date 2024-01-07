@@ -11,7 +11,7 @@ import java.io.IOException;
  * @author jeff chen
  * @since 2024-01-01 17:51
  */
-public interface WxResponseHandler<R> {
+public interface WxResponseHandler<T> {
 
-    R handle(Response response) throws WxException, IOException;
+    T handle(Response response) throws WxException, IOException;
 }

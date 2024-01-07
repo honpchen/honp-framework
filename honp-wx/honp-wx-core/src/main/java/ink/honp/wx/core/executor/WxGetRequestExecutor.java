@@ -11,7 +11,7 @@ import java.io.IOException;
  * @author jeff chen
  * @since 2024-01-01 22:30
  */
-public class WxGetRequestExecutor implements WxRequestExecutor {
+public class WxGetRequestExecutor implements WxRequestExecutor<Response> {
 
     private final OkHttpClient okHttpClient;
 

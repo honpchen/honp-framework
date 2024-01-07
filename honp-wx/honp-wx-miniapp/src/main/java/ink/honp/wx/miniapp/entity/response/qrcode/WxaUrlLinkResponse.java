@@ -1,7 +1,6 @@
 package ink.honp.wx.miniapp.entity.response.qrcode;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ink.honp.wx.miniapp.entity.response.qrcode.WxaQuotaInfoResponse;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,10 +13,10 @@ import lombok.EqualsAndHashCode;
 public class WxaUrlLinkResponse extends WxaQuotaInfoResponse {
 
     @JsonProperty("url_link_info")
-    private UrlLinkInfo urlLinkInfo;
+    private WxaUrlLinkInfo urlLinkInfo;
 
     @Data
-    public static class UrlLinkInfo {
+    public static class WxaUrlLinkInfo {
         /**
          * 小程序 appid
          */

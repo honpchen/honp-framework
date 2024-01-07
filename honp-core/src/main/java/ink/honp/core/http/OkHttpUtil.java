@@ -2,7 +2,8 @@ package ink.honp.core.http;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import ink.honp.core.constant.SymbolicConstant;
-import ink.honp.core.http.interceptor.OkHttpLogInterceptor;
+import ink.honp.core.http.enums.HttpLogLevel;
+import ink.honp.core.http.interceptor.OkHttpDefaultLogInterceptor;
 import ink.honp.core.http.request.*;
 import ink.honp.core.http.response.ResponseHandler;
 import ink.honp.core.http.response.StringResponseHandler;
@@ -56,7 +57,7 @@ public class OkHttpUtil {
             .connectTimeout(CONN_TIMEOUT_SEC, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT_SEC, TimeUnit.SECONDS)
             .writeTimeout(WRITE_TIMEOUT_SEC, TimeUnit.SECONDS)
-            .addInterceptor(new OkHttpLogInterceptor(OkHttpLogInterceptor.Level.BASIC))
+            .addInterceptor(new OkHttpDefaultLogInterceptor(HttpLogLevel.BASIC))
             .build();
 
     public static String get(@NonNull String url) {
@@ -177,13 +178,13 @@ public class OkHttpUtil {
         HTTP_CLIENT.interceptors().addAll(interceptors);
     }
 
-    public static void setLevel(@NonNull OkHttpLogInterceptor.Level level) {
+    public static void setLevel(@NonNull HttpLogLevel level) {
         List<Interceptor> interceptors = HTTP_CLIENT.interceptors();
         interceptors.stream()
-                .filter(OkHttpLogInterceptor.class::isInstance)
+                .filter(OkHttpDefaultLogInterceptor.class::isInstance)
                 .findFirst()
                 .ifPresent(interceptor -> {
-                    OkHttpLogInterceptor logInterceptor = (OkHttpLogInterceptor) interceptor;
+                    OkHttpDefaultLogInterceptor logInterceptor = (OkHttpDefaultLogInterceptor) interceptor;
                     logInterceptor.setLevel(level);
                 });
     }

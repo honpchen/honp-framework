@@ -1,6 +1,7 @@
 package ink.honp.core.http;
 
-import ink.honp.core.http.interceptor.OkHttpLogInterceptor;
+import ink.honp.core.http.enums.HttpLogLevel;
+import ink.honp.core.http.interceptor.OkHttpDefaultLogInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -28,7 +29,7 @@ class OkHttpUtilTest {
     @DisplayName("修改日志级别")
     void testSetLevel() {
         String url = "https://www.baidu.com";
-        OkHttpUtil.setLevel(OkHttpLogInterceptor.Level.BODY);
+        OkHttpUtil.setLevel(HttpLogLevel.BODY);
         String body = OkHttpUtil.get(url);
 
         Assertions.assertNotNull(body);

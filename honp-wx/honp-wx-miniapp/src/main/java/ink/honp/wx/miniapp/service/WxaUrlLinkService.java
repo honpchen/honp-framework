@@ -1,5 +1,6 @@
 package ink.honp.wx.miniapp.service;
 
+import ink.honp.wx.miniapp.entity.request.qrcode.WxaShortLinkGenerateRequest;
 import ink.honp.wx.miniapp.entity.request.qrcode.WxaUrlLinkGenerateRequest;
 import ink.honp.wx.miniapp.entity.request.qrcode.WxaUrlLinkQueryRequest;
 import ink.honp.wx.miniapp.entity.response.qrcode.WxaShortLinkResponse;
@@ -20,7 +21,7 @@ public interface WxaUrlLinkService extends WxaService {
      * @param generateUrlLinkRequest -
      * @return URLLink
      */
-    WxaUrlLinkGenerateResponse generateUrlLink(WxaUrlLinkGenerateRequest generateUrlLinkRequest);
+    String generateUrlLink(WxaUrlLinkGenerateRequest generateUrlLinkRequest);
 
     /**
      * 查询加密URLLink
@@ -39,8 +40,8 @@ public interface WxaUrlLinkService extends WxaService {
      *     目前只开放给电商类目(具体包含以下一级类目：电商平台、商家自营、跨境电商)。
      *     通过该接口，可以选择生成到期失效和永久有效的小程序短链
      * </pre>
-     * @param generateUrlLinkRequest -
+     * @param generateRequest -
      * @return ShortLink
      */
-    WxaShortLinkResponse generateShortLink(WxaUrlLinkGenerateRequest generateUrlLinkRequest);
+    String generateShortLink(WxaShortLinkGenerateRequest generateRequest);
 }

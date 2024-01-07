@@ -1,9 +1,8 @@
 package ink.honp.wx.miniapp.service;
 
-import ink.honp.wx.miniapp.entity.request.qrcode.WxaGenerateNfcSchemeRequest;
-import ink.honp.wx.miniapp.entity.request.qrcode.WxaGenerateSchemeRequest;
+import ink.honp.wx.miniapp.entity.request.qrcode.WxaNfcSchemeGenerateRequest;
+import ink.honp.wx.miniapp.entity.request.qrcode.WxaSchemeGenerateRequest;
 import ink.honp.wx.miniapp.entity.request.qrcode.WxaSchemeQueryRequest;
-import ink.honp.wx.miniapp.entity.response.qrcode.WxaOpenLinkResponse;
 import ink.honp.wx.miniapp.entity.response.qrcode.WxaSchemeInfoResponse;
 
 /**
@@ -20,17 +19,17 @@ public interface WxaUrlSchemeService extends WxaService {
      * @param nfcSchemeRequest -
      * @return 生成的小程序 scheme 码
      */
-    WxaOpenLinkResponse generateNfcScheme(WxaGenerateNfcSchemeRequest nfcSchemeRequest);
+    String generateNfcScheme(WxaNfcSchemeGenerateRequest nfcSchemeRequest);
 
     /**
      * 获取加密 scheme 码
      * <pre>
      *     该接口用于获取小程序 scheme 码，适用于短信、邮件、外部网页、微信内等拉起小程序的业务场景。目前仅针对国内非个人主体的小程序开放
      * </pre>
-     * @param generateSchemeRequest -
+     * @param schemeGenerateRequest -
      * @return 生成的小程序 scheme 码
      */
-    WxaOpenLinkResponse generateScheme(WxaGenerateSchemeRequest generateSchemeRequest);
+    String generateScheme(WxaSchemeGenerateRequest schemeGenerateRequest);
 
     /**
      * 查询scheme码

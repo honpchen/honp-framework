@@ -7,4 +7,5 @@ import ink.honp.wx.core.service.WxService;
  * date    2024/01/03 17:02
  */
 public interface WxaService extends WxService {
+
 }

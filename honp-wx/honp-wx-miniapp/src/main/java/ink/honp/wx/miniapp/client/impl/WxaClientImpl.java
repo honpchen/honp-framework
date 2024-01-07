@@ -31,7 +31,7 @@ import java.util.concurrent.locks.Lock;
 @Slf4j
 public class WxaClientImpl extends WxAbstractClientImpl implements WxaClient {
 
-    private static final String TAG = "WXA";
+    private static final String TAG = "WX MINI-APP";
 
     private static final long LOCK_TIMEOUT_MS = 100;
     private static final int MAX_RETRY_COUNT = 3;
@@ -40,6 +40,7 @@ public class WxaClientImpl extends WxAbstractClientImpl implements WxaClient {
     private final WxaConfig wxaConfig;
 
     public WxaClientImpl(WxaConfig wxaConfig) {
+        super(TAG, wxaConfig.getTimeout(), wxaConfig.getLevel());
         this.wxaConfig = wxaConfig;
     }
 
@@ -83,7 +84,7 @@ public class WxaClientImpl extends WxAbstractClientImpl implements WxaClient {
         String url = String.format(WxaUrlConstant.Login.CODE_2_SESSION,
                 wxaConfig.getAppid(), wxaConfig.getSecret(), jsCode);
 
-        String content = executeInternal(getDefaultGetExecutor(), url,
+        String content = executeInternal(getGetRequestExecutor(), url,
                 null, getResponseHandler(), NO_RETRY, NO_RETRY);
         if (StringUtils.isNotBlank(content)) {
             return JacksonUtil.toBean(content, WxaSessionInfoResponse.class);
@@ -93,17 +94,13 @@ public class WxaClientImpl extends WxAbstractClientImpl implements WxaClient {
     }
 
     @Override
-    public <T> T execute(WxRequestExecutor executor, String url,Object data, WxResponseHandler<T> responseHandler) {
+    public <T> T execute(WxRequestExecutor<Response> executor, String url,Object data, WxResponseHandler<T> responseHandler) {
         return execute(executor, url, data, responseHandler, true);
     }
 
-    @Override
-    public String getClientTag() {
-        return TAG;
-    }
 
 
-    private <T> T execute(WxRequestExecutor executor, String url, Object data,
+    private <T> T execute(WxRequestExecutor<Response> executor, String url, Object data,
                           WxResponseHandler<T> responseHandler, boolean autoRefreshAccessToken) {
         String accessToken = getAccessToken(false);
         String urlWithAccessToken = urlConcatAccessToken(url, accessToken);
@@ -133,7 +130,7 @@ public class WxaClientImpl extends WxAbstractClientImpl implements WxaClient {
         }
     }
 
-    private <T> T executeInternal(WxRequestExecutor executor, String url, Object data,
+    private <T> T executeInternal(WxRequestExecutor<Response> executor, String url, Object data,
                                 WxResponseHandler<T> responseHandler, int retryCount, int maxRetryCount)
             throws WxException{
 
@@ -184,7 +181,7 @@ public class WxaClientImpl extends WxAbstractClientImpl implements WxaClient {
                 .setSecret(wxaConfig.getSecret())
                 .setGrantType(WxGrantType.CLIENT_CREDENTIAL);
 
-        String content = executeInternal(getDefaultPostExecutor(), WxaUrlConstant.STABLE_TOKEN,
+        String content = executeInternal(getPostRequestExecutor(), WxaUrlConstant.STABLE_TOKEN,
                 tokenRequest, getResponseHandler(), 1, MAX_RETRY_COUNT);
         if (StringUtils.isNotBlank(content)) {
             return JacksonUtil.toBean(content, WxTokenInfo.class);

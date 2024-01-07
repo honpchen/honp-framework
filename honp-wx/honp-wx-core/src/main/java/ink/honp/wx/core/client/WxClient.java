@@ -22,8 +22,4 @@ public interface WxClient {
     <T> T post(String url, Object data, Class<T> repClz);
 
     <T> T post(String url, Object data, WxResponseHandler<T> responseHandler);
-
-    OkHttpClient getOkHttpClient();
-
-    void setOkHttpClient(OkHttpClient httpClient);
 }

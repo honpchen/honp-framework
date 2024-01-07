@@ -1,5 +1,6 @@
 package ink.honp.wx.miniapp.config;
 
+import ink.honp.core.http.enums.HttpLogLevel;
 import ink.honp.wx.core.entity.WxTokenInfo;
 
 import java.util.concurrent.locks.Lock;
@@ -11,8 +12,14 @@ import java.util.concurrent.locks.Lock;
  */
 public interface WxaConfig {
 
+    /**
+     * appid
+     */
     String getAppid();
 
+    /**
+     * secret
+     */
     String getSecret();
 
     /**
@@ -56,4 +63,20 @@ public interface WxaConfig {
      */
     void expiredAccessToken();
 
+    /**
+     * 请求超时时间
+     * @return 秒
+     */
+    Integer getTimeout();
+
+    /**
+     * 日志级别
+     * <pre>
+     *     none - 无，
+     *     basic - url,
+     *     body - request body
+     * </pre>
+     * @return 日志级别
+     */
+    HttpLogLevel getLevel();
 }

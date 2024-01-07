@@ -14,10 +14,10 @@ import lombok.EqualsAndHashCode;
 public class WxaQuotaInfoResponse extends WxResponse {
 
     @JsonProperty("quota_info")
-    private QuotaInfo quotaInfo;
+    private WxaQuotaInfo quotaInfo;
 
     @Data
-    public static class QuotaInfo {
+    public static class WxaQuotaInfo {
         /**
          * URL Scheme（加密+明文）/加密 URL Link 单天剩余访问次数
          */

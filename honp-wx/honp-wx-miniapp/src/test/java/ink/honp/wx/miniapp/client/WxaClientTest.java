@@ -1,6 +1,6 @@
 package ink.honp.wx.miniapp.client;
 
-import ink.honp.core.http.interceptor.OkHttpLogInterceptor;
+import ink.honp.core.http.enums.HttpLogLevel;
 import ink.honp.core.util.JacksonUtil;
 import ink.honp.core.util.ThreadUtil;
 import ink.honp.wx.core.exception.WxException;
@@ -26,15 +26,13 @@ import java.util.Set;
 @Slf4j
 class WxaClientTest {
 
-    private static final String APPID = "xxxx";
-    private static final String SECRET = "xxxxxx";
+    private static final String APPID = "xxxxx";
+    private static final String SECRET = "xxxxx";
 
     @Test
     @DisplayName("并发获取 accessToken")
     void testMultiThreadGetAccessToken() {
-        WxaConfig wxaConfig = new WxaDefaultConfig()
-                .setAppid(APPID)
-                .setSecret(SECRET);
+        WxaConfig wxaConfig = new WxaDefaultConfig(APPID, SECRET);
         
         WxaClient wxaClient = new WxaClientImpl(wxaConfig);
 
@@ -56,9 +54,7 @@ class WxaClientTest {
     @Test
     @DisplayName("获取 accessToken")
     void testGetAccessToken() {
-        WxaConfig wxaConfig = new WxaDefaultConfig()
-                .setAppid(APPID)
-                .setSecret(SECRET);
+        WxaConfig wxaConfig = new WxaDefaultConfig(APPID, SECRET);
 
         WxaClient wxaClient = new WxaClientImpl(wxaConfig);
         String accessToken = wxaClient.getAccessToken(false);
@@ -70,9 +66,7 @@ class WxaClientTest {
 
     @Test
     void testCode2Session() {
-        WxaConfig wxaConfig = new WxaDefaultConfig()
-               .setAppid(APPID)
-               .setSecret(SECRET);
+        WxaConfig wxaConfig = new WxaDefaultConfig(APPID, SECRET);
 
         String jsCode = "0b1OWGGa18HXEG0DUmJa1jcMIh4OWGGg";
 
@@ -86,10 +80,7 @@ class WxaClientTest {
     @Test
     @DisplayName("错误 jsCode 校验")
     void testCode2SessionWithErrorJsCode() {
-        WxaConfig wxaConfig = new WxaDefaultConfig()
-                .setAppid(APPID)
-                .setSecret(SECRET);
-
+        WxaConfig wxaConfig = new WxaDefaultConfig(APPID, SECRET);
         String jsCode = "0b1OWGGa18HXEG0DUmJa1jcMIh4OWGGg";
 
         WxaClient wxaClient = new WxaClientImpl(wxaConfig);

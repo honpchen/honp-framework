@@ -1,8 +1,8 @@
 package ink.honp.wx.miniapp.config;
 
+import ink.honp.core.http.enums.HttpLogLevel;
 import ink.honp.wx.core.entity.WxTokenInfo;
 import lombok.Data;
-import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 
@@ -16,18 +16,45 @@ import java.util.concurrent.locks.ReentrantLock;
  * date    2024/01/03 10:54
  */
 @Data
-@Accessors(chain = true)
 public class WxaDefaultConfig implements WxaConfig {
 
-    private String appid;
-    private String secret;
-    private String token;
-    private String encodingAesKey;
+    private static final Integer DEFAULT_TIMEOUT = 2 * 60;
+
+    private final String appid;
+    private final String secret;
+    private final String token;
+    private final String encodingAesKey;
+    private final Integer timeout;
+    private final HttpLogLevel level;
 
     private String accessToken;
     private long accessTokenExpireTimes;
 
     private final ReentrantLock accessTokenLock = new ReentrantLock();
+
+    public WxaDefaultConfig (String appid, String secret) {
+        this(appid, secret, null, null);
+    }
+
+    public WxaDefaultConfig (String appid, String secret, HttpLogLevel level) {
+        this(appid, secret, null, null, DEFAULT_TIMEOUT, level);
+    }
+
+    public WxaDefaultConfig (String appid, String secret, String token, String encodingAesKey) {
+        this(appid, secret, token, encodingAesKey, DEFAULT_TIMEOUT, HttpLogLevel.BASIC);
+    }
+
+
+    public WxaDefaultConfig (String appid, String secret,
+                             String token, String encodingAesKey,
+                             Integer timeout, HttpLogLevel level) {
+        this.appid = appid;
+        this.secret = secret;
+        this.token = token;
+        this.encodingAesKey = encodingAesKey;
+        this.timeout = timeout;
+        this.level = level;
+    }
 
     @Override
     public boolean accessTokenNotExpired() {

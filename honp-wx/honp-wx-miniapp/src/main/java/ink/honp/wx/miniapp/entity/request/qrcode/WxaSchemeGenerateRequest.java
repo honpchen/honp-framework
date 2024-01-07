@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
-public class WxaGenerateSchemeRequest extends WxaUrlSchemeRequest {
+public class WxaSchemeGenerateRequest extends WxaUrlSchemeRequest {
 
     /**
      * 到期失效的 scheme 码的失效时间，为 Unix 时间戳。生成的到期失效 scheme 码在该时间前有效。

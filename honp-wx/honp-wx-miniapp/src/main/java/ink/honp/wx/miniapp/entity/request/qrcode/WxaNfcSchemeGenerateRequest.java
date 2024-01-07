@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
-public class WxaGenerateNfcSchemeRequest extends WxaUrlSchemeRequest {
+public class WxaNfcSchemeGenerateRequest extends WxaUrlSchemeRequest {
 
     /**
      * scheme对应的设备model_id，必填

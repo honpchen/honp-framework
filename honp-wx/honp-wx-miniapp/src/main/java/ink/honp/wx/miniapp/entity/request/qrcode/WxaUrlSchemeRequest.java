@@ -10,6 +10,7 @@ import lombok.experimental.Accessors;
  * date    2024/01/04 9:48
  */
 @Data
+@Accessors(chain = true)
 public class WxaUrlSchemeRequest implements WxRequest {
 
     /**
@@ -37,6 +38,7 @@ public class WxaUrlSchemeRequest implements WxRequest {
         /**
          * 要打开的小程序版本。正式版为"release"，体验版为"trial"，开发版为"develop"，仅在微信外打开时生效
          */
+        @JsonProperty("env_version")
         private String envVersion;
     }
 }
