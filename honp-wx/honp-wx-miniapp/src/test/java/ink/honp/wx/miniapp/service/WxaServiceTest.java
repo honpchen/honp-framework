@@ -16,8 +16,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class WxaServiceTest {
 
-    private static final String APPID = "wx53b2b2472696934b";
-    private static final String SECRET = "a6be31d510906a029f3796d9349f186a";
+    private static final String APPID = "xxxxxx";
+    private static final String SECRET = "xxxxxxx";
     private static final String ACCESS_TOKEN = "76_U9VSOfVZOVljQ_5W3Sua7QP1VlOtMUSwtCax7qrx3uDZukaoyL9XN5vPW3WijUw2mtK0OErKAj61Hr4aI5NaxZwyA0PDwJvL4ncTGfVjwsBJsu1z2H1wYwYuHJwECOeAEALJV";
     private static final Integer EXPIRES_IN = 7200;
     private static final Integer TIMEOUT = 2 * 60;

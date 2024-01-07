@@ -26,8 +26,8 @@ import java.util.Set;
 @Slf4j
 class WxaClientTest {
 
-    private static final String APPID = "wx53b2b2472696934b";
-    private static final String SECRET = "a6be31d510906a029f3796d9349f186a";
+    private static final String APPID = "xxxx";
+    private static final String SECRET = "xxxxxx";
 
     @Test
     @DisplayName("并发获取 accessToken")
