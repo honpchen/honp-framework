@@ -1,9 +1,8 @@
 package ink.honp.wx.miniapp.service;
 
-import ink.honp.wx.miniapp.entity.request.broadcast.WxaBroadcastRoleAddRequest;
+import ink.honp.wx.miniapp.entity.request.broadcast.WxaBroadcastRoleRequest;
 import ink.honp.wx.miniapp.entity.request.broadcast.WxaBroadcastRoleDeleteRequest;
 import ink.honp.wx.miniapp.entity.request.broadcast.WxaBroadcastRoleQueryRequest;
-import ink.honp.wx.miniapp.entity.response.broadcast.WxaBroadcastRoleAddResponse;
 import ink.honp.wx.miniapp.entity.response.broadcast.WxaBroadcastRoleListResponse;
 
 /**
@@ -15,9 +14,9 @@ public interface WxaBroadcastRoleService extends WxaService {
     /**
      * 设置成员角色
      * @param roleAddRequest -
-     * @return -
+     * @return codeurl, 如果主播未实名认证，需要先前往“小程序直播”小程序进行实名验证
      */
-    WxaBroadcastRoleAddResponse addRole(WxaBroadcastRoleAddRequest roleAddRequest);
+    String addRole(WxaBroadcastRoleRequest roleAddRequest);
 
     /**
      * 删除成员角色

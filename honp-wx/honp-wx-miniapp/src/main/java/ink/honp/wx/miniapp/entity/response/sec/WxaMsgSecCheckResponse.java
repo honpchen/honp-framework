@@ -16,7 +16,7 @@ public class WxaMsgSecCheckResponse extends WxResponse {
     /**
      * 详细检测结果
      */
-    private MsgSecCheckDetail detail;
+    private WxaMsgSecCheckDetail detail;
 
     /**
      * 唯一请求标识，标记单次请求
@@ -27,11 +27,11 @@ public class WxaMsgSecCheckResponse extends WxResponse {
     /**
      * 综合结果
      */
-    private MsgSecCheckResult result;
+    private WxaMsgSecCheckResult result;
 
     @Data
     @EqualsAndHashCode(callSuper = true)
-    public static class MsgSecCheckDetail extends MsgSecCheckResult {
+    public static class WxaMsgSecCheckDetail extends WxaMsgSecCheckResult {
 
         /**
          * 策略类型
@@ -55,7 +55,7 @@ public class WxaMsgSecCheckResponse extends WxResponse {
     }
 
     @Data
-    public static class MsgSecCheckResult {
+    public static class WxaMsgSecCheckResult {
 
         /**
          * 建议，有risky、pass、review三种值

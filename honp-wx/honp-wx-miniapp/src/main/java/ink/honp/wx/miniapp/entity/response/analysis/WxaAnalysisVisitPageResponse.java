@@ -21,10 +21,10 @@ public class WxaAnalysisVisitPageResponse extends WxResponse {
     @JsonProperty("ref_date")
     private String refDate;
 
-    private List<VisitPageInfo> list;
+    private List<WxaVisitPageInfo> list;
 
     @Data
-    public static class VisitPageInfo {
+    public static class WxaVisitPageInfo {
         /**
          * 页面路径
          */

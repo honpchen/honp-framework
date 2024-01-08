@@ -26,7 +26,7 @@ import java.util.Set;
 @Slf4j
 class WxaClientTest {
 
-    private static final String APPID = "xxxxx";
+    private static final String APPID = "xxxxxx";
     private static final String SECRET = "xxxxx";
 
     @Test

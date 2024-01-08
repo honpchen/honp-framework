@@ -1,0 +1,2 @@
+### getPubTemplateTitleList
+GET https://api.weixin.qq.com/wxaapi/newtmpl/getpubtemplatetitles?access_token=76_55MDdWAz2-N0VOwl2P9kmjH0HvAKJTj9mKBipaNoBzFx_Ea9GFXHaO64cp90GH-d180UZ-FPE518j1rZI1IEj5NdeykHn8w_lsADagbwDFVcQTyxY7HQpf2r8TgAANeAEAHHU&start=0&limit=1&ids=221

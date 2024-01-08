@@ -2,6 +2,7 @@ package ink.honp.wx.miniapp.entity.request.broadcast;
 
 import ink.honp.wx.core.entity.request.WxRequest;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -12,12 +13,8 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
-public class WxaBroadcastGoodsSortRequest implements WxRequest {
-
-    /**
-     * 房间ID
-     */
-    private Long roomId;
+@EqualsAndHashCode(callSuper = true)
+public class WxaBroadcastGoodsSortRequest extends WxaBroadRoomIdRequest {
 
     /**
      * 商品ID列表

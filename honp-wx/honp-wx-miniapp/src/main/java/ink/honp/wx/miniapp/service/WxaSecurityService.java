@@ -30,9 +30,9 @@ public interface WxaSecurityService extends WxaService {
      *     结果会通过消息推送通知
      * </pre>
      * @param mediaCheckAsyncRequest -
-     * @return -
+     * @return 唯一请求标识  trace_id，标记单次请求
      */
-    WxTraceResponse mediaCheckAsync(WxaMediaCheckAsyncRequest mediaCheckAsyncRequest);
+    String mediaCheckAsync(WxaMediaCheckAsyncRequest mediaCheckAsyncRequest);
 
     /**
      * 获取用户安全等级

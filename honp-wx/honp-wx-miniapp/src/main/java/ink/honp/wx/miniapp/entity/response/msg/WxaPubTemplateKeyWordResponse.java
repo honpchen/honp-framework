@@ -14,10 +14,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class WxaPubTemplateKeyWordResponse extends WxResponse {
 
-    private List<PubTemplateKeyWord> data;
+    private List<WxaPubTemplateKeyWord> data;
 
     @Data
-    public static class PubTemplateKeyWord {
+    public static class WxaPubTemplateKeyWord {
         /**
          * 关键词 id，选用模板时需要
          */

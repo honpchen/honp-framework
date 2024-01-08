@@ -3,6 +3,7 @@ package ink.honp.wx.miniapp.entity.request.broadcast;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ink.honp.wx.core.entity.request.WxRequest;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -13,11 +14,9 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
-public class WxaBroadcastPushMessageRequest implements WxRequest {
+public class WxaBroadcastPushMessageRequest implements WxRequest{
 
-    /**
-     * 直播开始事件的房间ID
-     */
+    @JsonProperty("room_id")
     private Long roomId;
 
     /**

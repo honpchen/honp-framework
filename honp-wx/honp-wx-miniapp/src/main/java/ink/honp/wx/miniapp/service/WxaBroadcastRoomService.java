@@ -50,24 +50,24 @@ public interface WxaBroadcastRoomService extends WxaService {
     /**
      * 推送商品
      * @param roomId 房间 ID
-     * @param goodId 商品 ID
+     * @param goodsId 商品 ID
      */
-    void pushGoods(Long roomId, Long goodId);
+    void pushGoods(Long roomId, Long goodsId);
 
     /**
      * 上下架商品
      * @param roomId 房间 ID
-     * @param goodId 商品 ID
+     * @param goodsId 商品 ID
      * @param onSale 上下架 【0：下架，1：上架】
      */
-    void saleGoods(Long roomId, Long goodId, Integer onSale);
+    void saleGoods(Long roomId, Long goodsId, Integer onSale);
 
     /**
      * 删除直播间商品
      * @param roomId 房间 ID
-     * @param goodId 商品 ID
+     * @param goodsId 商品 ID
      */
-    void deleteGoods(Long roomId, Long goodId);
+    void deleteGoods(Long roomId, Long goodsId);
 
     /**
      * 直播间商品排序
@@ -80,21 +80,22 @@ public interface WxaBroadcastRoomService extends WxaService {
      * @param roomId 房间ID
      * @return 推流地址
      */
-    WxaBroadcastRoomPushAddressResponse getPushUrl(Long roomId);
+    String getPushUrl(Long roomId);
 
     /**
      * 获取直播间分享二维码
      * @param roomId 房间ID
+     * @param params 自定义参数， 可选
      * @return 直播间分享二维码
      */
-    WxaBroadcastRoomShareCodeResponse getShareCode(Long roomId);
+    WxaBroadcastRoomShareCodeResponse getShareCode(Long roomId, String params);
 
     /**
      * 获取主播副号
      * @param roomId 房间 ID
-     * @return -
+     * @return 主播微信号
      */
-    WxaBroadcastRoomSubAnchorResponse getSubAnchor(Long roomId);
+    String getSubAnchor(Long roomId);
 
     /**
      * 添加主播副号
@@ -171,8 +172,8 @@ public interface WxaBroadcastRoomService extends WxaService {
     /**
      * 下载商品讲解视频
      * @param roomId 房间ID
-     * @param goodId 商品ID
+     * @param goodsId 商品ID
      * @return 讲解链接
      */
-    String downloadGoodsVideo(Long roomId, Long goodId);
+    String downloadGoodsVideo(Long roomId, Long goodsId);
 }

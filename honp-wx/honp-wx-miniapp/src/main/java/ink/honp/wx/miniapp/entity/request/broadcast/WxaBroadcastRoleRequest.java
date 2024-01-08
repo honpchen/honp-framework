@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class WxaBroadcastRoleAddRequest implements WxRequest {
+public class WxaBroadcastRoleRequest implements WxRequest {
 
     /**
      * 用户的微信号

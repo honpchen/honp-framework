@@ -14,10 +14,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class WxaCategoryResponse extends WxResponse {
 
-    private List<Category> data;
+    private List<WxaCategory> data;
 
     @Data
-    public static class Category {
+    public static class WxaCategory {
 
         /**
          * 类目 id

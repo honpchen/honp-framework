@@ -9,6 +9,6 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class WxaBroadcastRoleDeleteRequest extends WxaBroadcastRoleAddRequest {
+public class WxaBroadcastRoleDeleteRequest extends WxaBroadcastRoleRequest {
 
 }

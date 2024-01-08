@@ -18,10 +18,9 @@ import java.util.concurrent.TimeUnit;
 public class WxaServiceTest {
 
     private static final String APPID = "xxxxxx";
-    private static final String SECRET = "xxxxxxx";
-    private static final String ACCESS_TOKEN = "76_fwVi8tDNbD2ZYoe9G0G_xf2E4eU-5b9TUh6IiIztKeMhaoPMRw_CZt0u7QPVPoqFH0bKi5J4SYYLnsLc58bmO2Diiao5qDDACtcFGuJUtp2GwZTt8yap14-Zg6AKFPaABAXSC";
+    private static final String SECRET = "xxxxxx";
+    private static final String ACCESS_TOKEN = "76_yMw60CWlAeeh9xoQ4HbtuRrvt-wzV2ztfA5rq006KvF1kE866plxk55X8iHnyhLBznAgYbSZ5EZUkQbqnsXnLBlw5wxXSVK9Ykkvcz6_P3KJUsdNKzxRdINEp1wFPUdAIALVA";
     private static final Integer EXPIRES_IN = 7200;
-    private static final Integer TIMEOUT = 2 * 60;
 
 
     public WxaClient getWxaClient() {

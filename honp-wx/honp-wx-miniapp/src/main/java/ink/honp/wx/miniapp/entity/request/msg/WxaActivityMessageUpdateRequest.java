@@ -32,19 +32,19 @@ public class WxaActivityMessageUpdateRequest implements WxRequest {
     private Integer targetState;
 
     @JsonProperty("template_info")
-    private TemplateInfo templateInfo;
+    private WxaMessageTemplateInfo templateInfo;
 
     @Data
     @Accessors(chain = true)
-    public static class TemplateInfo {
+    public static class WxaMessageTemplateInfo {
 
         @JsonProperty("parameter_list")
-        private List<Parameter> parameterList;
+        private List<WxaTemplateParameter> parameterList;
     }
 
     @Data
     @Accessors(chain = true)
-    public static class Parameter {
+    public static class WxaTemplateParameter {
 
         /**
          * 要修改的参数名

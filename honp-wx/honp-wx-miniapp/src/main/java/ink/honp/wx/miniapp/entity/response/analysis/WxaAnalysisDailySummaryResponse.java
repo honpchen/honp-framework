@@ -15,10 +15,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class WxaAnalysisDailySummaryResponse extends WxResponse {
 
-    private List<DailySummary> list;
+    private List<WxaDailySummary> list;
 
     @Data
-    public static class DailySummary {
+    public static class WxaDailySummary {
 
         /**
          * 时间

@@ -2,6 +2,7 @@ package ink.honp.wx.miniapp.entity.response.broadcast;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ink.honp.wx.core.entity.response.WxResponse;
+import ink.honp.wx.miniapp.entity.response.WxaListResponse;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,19 +14,13 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class WxaBroadcastLiveListResponse extends WxResponse {
+public class WxaBroadcastLiveListResponse extends WxaListResponse {
 
     /**
      * action="get_replay"不返回
      */
     @JsonProperty("room_info")
     private List<WxaBroadcastRoomInfo> roomInfo;
-
-    /**
-     * 拉取房间总数
-     */
-    private Long total;
-
 
     /**
      * action="get_replay"返回
@@ -44,16 +39,19 @@ public class WxaBroadcastLiveListResponse extends WxResponse {
         /**
          * 直播间背景图链接
          */
+        @JsonProperty("cover_img")
         private String coverImg;
 
         /**
          * 直播间开始时间，列表按照start_time降序排列
          */
+        @JsonProperty("start_time")
         private Long startTime;
 
         /**
          * 直播计划结束时间
          */
+        @JsonProperty("end_time")
         private Long endTime;
 
         /**
@@ -65,6 +63,7 @@ public class WxaBroadcastLiveListResponse extends WxResponse {
         /**
          * 直播间ID
          */
+        @JsonProperty("roomid")
         private Long roomId;
 
         /**

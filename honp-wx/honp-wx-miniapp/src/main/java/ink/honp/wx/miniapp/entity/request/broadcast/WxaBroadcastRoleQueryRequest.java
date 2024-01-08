@@ -15,7 +15,7 @@ public class WxaBroadcastRoleQueryRequest implements WxRequest {
     /**
      * 查询的用户角色，取值 [-1-所有成员， 0-超级管理员，1-管理员，2-主播，3-运营者]，默认-1
      */
-    private Long role;
+    private Integer role;
 
     /**
      * 起始偏移量, 默认0

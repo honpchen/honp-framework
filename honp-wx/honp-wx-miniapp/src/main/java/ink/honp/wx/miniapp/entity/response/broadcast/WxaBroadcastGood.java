@@ -18,6 +18,7 @@ public class WxaBroadcastGood {
     /**
      * 商品封面图链接
      */
+    @JsonProperty("cover_img")
     private String coverImg;
 
     /**

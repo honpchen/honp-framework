@@ -14,10 +14,10 @@ import lombok.EqualsAndHashCode;
 public class WxaUserNotifyResponse extends WxResponse {
 
     @JsonProperty("notify_info")
-    private NotifyInfo notifyInfo;
+    private WxaNotifyInfo notifyInfo;
 
     @Data
-    public static class NotifyInfo {
+    public static class WxaNotifyInfo {
 
         /**
          * 卡片id

@@ -1,7 +1,7 @@
 package ink.honp.wx.miniapp.entity.request.broadcast;
 
-import ink.honp.wx.core.entity.request.WxRequest;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -11,13 +11,9 @@ import java.util.List;
  * date    2024/01/05 11:42
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-public class WxaBroadcastAssistantAddRequest implements WxRequest {
-
-    /**
-     * 房间ID
-     */
-    private Long roomId;
+public class WxaBroadcastAssistantAddRequest extends WxaBroadRoomIdRequest {
 
     /**
      * 用户数组

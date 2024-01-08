@@ -14,12 +14,7 @@ public class WxConstant {
     public static final String ERR_CODE = "errcode";
     public static final String ERR_MSG = "errmsg";
     public static final String ACCESS_TOKEN = "access_token";
-
-    public interface Lang {
-        String ZH_CN = "zh_CN";
-        String ZH_HK = "zh_HK";
-        String ZH_TW = "zh_TW";
-        String EN_US = "en_US";
-    }
+    public static final String VALUE = "value";
+    public static final String ID = "id";
 
 }

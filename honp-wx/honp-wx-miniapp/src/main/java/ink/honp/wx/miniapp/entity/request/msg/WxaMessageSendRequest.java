@@ -1,10 +1,16 @@
 package ink.honp.wx.miniapp.entity.request.msg;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import ink.honp.core.util.CollectionUtil;
+import ink.honp.core.util.JacksonUtil;
 import ink.honp.wx.core.constant.WxConstant;
+import ink.honp.wx.core.constant.WxLang;
 import ink.honp.wx.core.entity.request.WxRequest;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author jeffchen
@@ -46,5 +52,33 @@ public class WxaMessageSendRequest implements WxRequest {
      * 进入小程序查看”的语言类型，
      * 支持zh_CN(简体中文)、en_US(英文)、zh_HK(繁体中文)、zh_TW(繁体中文)，默认为zh_CN
      */
-    private String lang = WxConstant.Lang.ZH_CN;
+    private String lang = WxLang.ZH_CN;
+
+
+    public WxaMessageSendRequest setData(List<WxaMessageData> dataList) {
+        Map<String, Map<String, String>> dataMap = CollectionUtil.newHashMap(4);
+        dataList.forEach(msgData -> {
+            Map<String, String> valueMap = CollectionUtil.newHashMap();
+            valueMap.put(WxConstant.VALUE, msgData.getValue());
+
+            dataMap.put(msgData.getKey(), valueMap);
+        });
+
+        this.data = JacksonUtil.toJson(dataMap);
+        return this;
+    }
+
+
+    @Data
+    public static class WxaMessageData {
+
+        private String key;
+
+        private String value;
+
+        public WxaMessageData(String key, String value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
 }

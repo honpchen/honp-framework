@@ -25,16 +25,16 @@ public class WxaAnalysisRetainResponse extends WxResponse {
      * 新增用户留存
      */
     @JsonProperty("visit_uv_new")
-    private List<Uv> visitUvNew;
+    private List<WxaUv> visitUvNew;
 
     /**
      * 活跃用户留存
      */
     @JsonProperty("visit_uv")
-    private List<Uv> visitUv;
+    private List<WxaUv> visitUv;
 
     @Data
-    public static class Uv {
+    public static class WxaUv {
 
         /**
          * 标识

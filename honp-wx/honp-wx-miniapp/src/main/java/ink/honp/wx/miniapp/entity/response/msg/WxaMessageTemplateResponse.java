@@ -14,10 +14,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class WxaMessageTemplateResponse extends WxResponse {
 
-    private List<MessageTemplate> data;
+    private List<WxaMessageTemplate> data;
 
     @Data
-    public static class MessageTemplate {
+    public static class WxaMessageTemplate {
 
         /**
          * 添加至账号下的模板 id，发送小程序订阅消息时所需
@@ -47,11 +47,11 @@ public class WxaMessageTemplateResponse extends WxResponse {
         /**
          * 枚举参数值范围
          */
-        private List<KeyWordEnum> keywordEnumValueList;
+        private List<WxaKeyWordEnum> keywordEnumValueList;
     }
 
     @Data
-    public static class KeyWordEnum {
+    public static class WxaKeyWordEnum {
 
         /**
          * 枚举参数的 key

@@ -10,15 +10,6 @@ import ink.honp.wx.miniapp.entity.response.msg.*;
 public interface WxaSubscribeMessageService extends WxaService {
 
     /**
-     * 删除模板
-     * <pre>
-     *     该接口用于删除账号下的个人模板
-     * </pre>
-     * @param priTmplId 要删除的模板id
-     */
-    void deleteMessageTemplate(String priTmplId);
-
-    /**
      * 获取类目
      * <pre>
      *     该接口用于获取小程序账号的类目
@@ -27,19 +18,21 @@ public interface WxaSubscribeMessageService extends WxaService {
      */
     WxaCategoryResponse getCategory();
 
+
+    /**
+     * 获取所属类目下的公共模板
+     * @param pageRequest 分页
+     * @return 公共模板标题列表
+     */
+    WxaPubTemplateTitleListResponse getPubTemplateTitleList(WxaPubTemplateTitlePageRequest pageRequest);
+
+
     /**
      * 获取关键词列表
      * @param tid 模板标题 id
      * @return 关键词列表
      */
-    WxaPubTemplateKeyWordResponse getPubTemplateKeyWordsById(String tid);
-
-    /**
-     * 获取所属类目下的公共模板
-     * @param getRequest -
-     * @return 公共模板标题列表
-     */
-    WxaPubTemplateTitleListResponse getPubTemplateTitleList(WxaPubTemplateTitleListGetRequest getRequest);
+    WxaPubTemplateKeyWordResponse getPubTemplateKeyWordsById(Long tid);
 
     /**
      * 获取个人模板列表
@@ -78,5 +71,14 @@ public interface WxaSubscribeMessageService extends WxaService {
      * @param notifyExtSetRequest -
      */
     void setUserNotifyExt(WxaUserNotifyExtSetRequest notifyExtSetRequest);
+
+    /**
+     * 删除模板
+     * <pre>
+     *     该接口用于删除账号下的个人模板
+     * </pre>
+     * @param priTmplId 要删除的模板id
+     */
+    void deleteMessageTemplate(String priTmplId);
 
 }

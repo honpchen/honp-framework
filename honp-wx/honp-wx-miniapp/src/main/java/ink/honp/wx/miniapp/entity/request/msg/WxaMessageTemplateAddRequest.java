@@ -4,6 +4,8 @@ import ink.honp.wx.core.entity.request.WxRequest;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 /**
  * @author jeffchen
  * date    2024/01/04 16:23
@@ -22,7 +24,7 @@ public class WxaMessageTemplateAddRequest implements WxRequest {
      * 最多支持5个，最少2个关键词组合。若为新的一次性订阅消息模板（tid >= 10000001 && tid < 20000000），则该项需传空数组
      * 必填
      */
-    private String kidList;
+    private List<Long> kidList;
 
     /**
      * 服务场景描述，15个字以内

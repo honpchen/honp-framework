@@ -8,6 +8,15 @@ import ink.honp.wx.miniapp.entity.response.analysis.*;
  */
 public interface WxaAnalysisService extends WxaService {
 
+
+    /**
+     * 获取用户访问小程序日留存
+     * @param beginDate 开始日期。格式为 yyyymmdd, 必填
+     * @param endDate 结束日期，限定查询1天数据，允许设置的最大值为昨日。格式为 yyyymmdd, 必填
+     * @return -
+     */
+    WxaAnalysisRetainResponse getDailyRetain(String beginDate, String endDate);
+
     /**
      * 获取用户访问小程序周留存
      * @param beginDate 开始日期，为周一日期。格式为 yyyymmdd, 必填
@@ -24,21 +33,6 @@ public interface WxaAnalysisService extends WxaService {
      */
     WxaAnalysisRetainResponse getMonthlyRetain(String beginDate, String endDate);
 
-    /**
-     * 获取用户访问小程序日留存
-     * @param beginDate 开始日期。格式为 yyyymmdd, 必填
-     * @param endDate 结束日期，限定查询1天数据，允许设置的最大值为昨日。格式为 yyyymmdd, 必填
-     * @return -
-     */
-    WxaAnalysisRetainResponse getDailyRetain(String beginDate, String endDate);
-
-    /**
-     * 获取用户访问小程序数据月趋势
-     * @param beginDate 开始日期，为自然月第一天。格式为 yyyymmdd
-     * @param endDate 结束日期，为自然月最后一天，限定查询一个月的数据。格式为 yyyymmdd
-     * @return -
-     */
-    WxaAnalysisVisitTrendResponse getMonthlyVisitTrend(String beginDate, String endDate);
 
     /**
      * 获取用户访问小程序数据日趋势
@@ -55,6 +49,14 @@ public interface WxaAnalysisService extends WxaService {
      * @return -
      */
     WxaAnalysisVisitTrendResponse getWeeklyVisitTrend(String beginDate, String endDate);
+
+    /**
+     * 获取用户访问小程序数据月趋势
+     * @param beginDate 开始日期，为自然月第一天。格式为 yyyymmdd
+     * @param endDate 结束日期，为自然月最后一天，限定查询一个月的数据。格式为 yyyymmdd
+     * @return -
+     */
+    WxaAnalysisVisitTrendResponse getMonthlyVisitTrend(String beginDate, String endDate);
 
     /**
      * 获取用户访问小程序数据概况

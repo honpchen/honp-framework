@@ -2,6 +2,7 @@ package ink.honp.wx.miniapp.entity.response.broadcast;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ink.honp.wx.core.entity.response.WxResponse;
+import ink.honp.wx.miniapp.entity.response.WxaListResponse;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,15 +15,10 @@ import java.util.List;
 @SuppressWarnings("all")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class WxaBroadcastGoodsAuditInfoResponse extends WxResponse {
+public class WxaBroadcastGoodsAuditInfoResponse extends WxaListResponse {
 
 
     private List<WxaBroadcastGoodAuditInfo> goods;
-
-    /**
-     * 商品总数
-     */
-    private Long total;
 
 
     @Data

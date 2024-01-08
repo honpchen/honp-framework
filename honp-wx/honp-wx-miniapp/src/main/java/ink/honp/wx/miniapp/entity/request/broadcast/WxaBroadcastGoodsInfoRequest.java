@@ -1,6 +1,5 @@
 package ink.honp.wx.miniapp.entity.request.broadcast;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import ink.honp.wx.core.entity.request.WxRequest;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -51,12 +50,10 @@ public class WxaBroadcastGoodsInfoRequest implements WxRequest {
      *      3：显示折扣价（price字段为原价，price2字段为现价， price和price2必传）
      * </pre>
      */
-    @JsonProperty("price_type")
     private Integer priceType;
 
     /**
      * 当商品为第三方小程序的商品则填写为对应第三方小程序的appid，自身小程序商品则为''
      */
-    @JsonProperty("third_party_appid")
     private String thirdPartyAppid;
 }
