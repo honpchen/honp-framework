@@ -36,7 +36,7 @@ class WxaBroadcastRoomServiceTest extends WxaServiceTest {
     
     @Test
     void testGetPushUrl() {
-        WxaBroadcastRoomService wxaBroadcastRoomService = new WxaBroadcastRoomServiceImpl(getWxaClient());
+        WxaBroadcastRoomService wxaBroadcastRoomService = getWxaClient().getWxaService(WxaBroadcastRoomService.class);
 
         String pushUrl = wxaBroadcastRoomService.getPushUrl(14L);
         Assertions.assertNotNull(pushUrl);
@@ -46,7 +46,7 @@ class WxaBroadcastRoomServiceTest extends WxaServiceTest {
 
     @Test
     void testGetShareCode() {
-        WxaBroadcastRoomService wxaBroadcastRoomService = new WxaBroadcastRoomServiceImpl(getWxaClient());
+        WxaBroadcastRoomService wxaBroadcastRoomService = getWxaClient().getWxaService(WxaBroadcastRoomService.class);
 
         WxaBroadcastRoomShareCodeResponse shareCode = wxaBroadcastRoomService.getShareCode(14L, null);
         Assertions.assertNotNull(shareCode);

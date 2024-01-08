@@ -16,6 +16,8 @@ import ink.honp.wx.miniapp.client.WxaClient;
 import ink.honp.wx.miniapp.config.WxaConfig;
 import ink.honp.wx.miniapp.constant.WxaUrlConstant;
 import ink.honp.wx.miniapp.entity.response.user.WxaSessionInfoResponse;
+import ink.honp.wx.miniapp.factory.WxaServiceFactory;
+import ink.honp.wx.miniapp.service.WxaService;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import org.apache.commons.lang3.StringUtils;
@@ -38,10 +40,12 @@ public class WxaClientImpl extends WxAbstractClientImpl implements WxaClient {
     private static final int NO_RETRY = -1;
 
     private final WxaConfig wxaConfig;
+    private final WxaServiceFactory wxaServiceFactory;
 
     public WxaClientImpl(WxaConfig wxaConfig) {
         super(TAG, wxaConfig.getTimeout(), wxaConfig.getLevel());
         this.wxaConfig = wxaConfig;
+        wxaServiceFactory = new WxaServiceFactory(this);
     }
 
     @Override
@@ -187,5 +191,10 @@ public class WxaClientImpl extends WxAbstractClientImpl implements WxaClient {
             return JacksonUtil.toBean(content, WxTokenInfo.class);
         }
         throw new WxException(WxError.GET_ACCESS_TOKEN_ERROR);
+    }
+
+    @Override
+    public <T extends WxaService> T getWxaService(Class<T> clazz) {
+        return wxaServiceFactory.getWxaService(clazz);
     }
 }

@@ -3,6 +3,7 @@ package ink.honp.wx.miniapp.client;
 import ink.honp.wx.core.client.WxClient;
 import ink.honp.wx.miniapp.config.WxaConfig;
 import ink.honp.wx.miniapp.entity.response.user.WxaSessionInfoResponse;
+import ink.honp.wx.miniapp.service.WxaService;
 
 /**
  * 微信小程序端
@@ -30,4 +31,12 @@ public interface WxaClient extends WxClient {
      * @return WxaSessionInfoResponse
      */
     WxaSessionInfoResponse code2Session(String jsCode);
+
+    /**
+     * 获取小程序服务
+     * @param clazz 小程序服务类型
+     * @return 服务实例
+     * @param <T> -
+     */
+    <T extends WxaService> T getWxaService(Class<T> clazz);
 }

@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class WxaServiceTest {
 
-    private static final String APPID = "xxxxxx";
+    private static final String APPID = "xxxxx";
     private static final String SECRET = "xxxxxx";
     private static final String ACCESS_TOKEN = "76_yMw60CWlAeeh9xoQ4HbtuRrvt-wzV2ztfA5rq006KvF1kE866plxk55X8iHnyhLBznAgYbSZ5EZUkQbqnsXnLBlw5wxXSVK9Ykkvcz6_P3KJUsdNKzxRdINEp1wFPUdAIALVA";
     private static final Integer EXPIRES_IN = 7200;
