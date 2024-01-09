@@ -87,7 +87,7 @@ public abstract class WxAbstractClientImpl implements WxClient {
     }
 
     /**
-     * 底层请求方法，若无服务实现所需要方法，则可以使用该方法请求微信 API
+     * 该执行方法，会自动添加 token
      * @param executor      请求执行器
      * @param url           请求地址
      * @param data          请求数据

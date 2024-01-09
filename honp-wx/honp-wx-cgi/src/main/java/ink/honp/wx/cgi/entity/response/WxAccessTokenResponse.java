@@ -1,4 +1,4 @@
-package ink.honp.wx.core.entity;
+package ink.honp.wx.cgi.entity.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.Data;
  * date    2024/01/02 11:17
  */
 @Data
-public class WxTokenInfo {
+public class WxAccessTokenResponse {
 
     /** 凭证 **/
     @JsonProperty("access_token")

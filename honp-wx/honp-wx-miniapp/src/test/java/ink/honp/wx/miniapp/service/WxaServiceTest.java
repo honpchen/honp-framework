@@ -1,15 +1,11 @@
 package ink.honp.wx.miniapp.service;
 
 import ink.honp.core.http.enums.HttpLogLevel;
-import ink.honp.core.http.interceptor.OkHttpDefaultLogInterceptor;
-import ink.honp.wx.core.entity.WxTokenInfo;
+import ink.honp.wx.cgi.entity.response.WxAccessTokenResponse;
 import ink.honp.wx.miniapp.client.WxaClient;
 import ink.honp.wx.miniapp.client.impl.WxaClientImpl;
 import ink.honp.wx.miniapp.config.WxaConfig;
 import ink.honp.wx.miniapp.config.WxaDefaultConfig;
-import okhttp3.OkHttpClient;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author jeffchen
@@ -30,11 +26,11 @@ public class WxaServiceTest {
         WxaConfig wxaConfig = new WxaDefaultConfig(APPID, SECRET, HttpLogLevel.BODY);
 
 
-        WxTokenInfo tokenInfo = new WxTokenInfo();
+        WxAccessTokenResponse tokenInfo = new WxAccessTokenResponse();
         tokenInfo.setAccessToken(ACCESS_TOKEN);
         tokenInfo.setExpiresIn(EXPIRES_IN);
 
-        wxaConfig.refreshAccessToken(tokenInfo);
+        wxaConfig.refreshAccessToken(tokenInfo.getAccessToken(), tokenInfo.getExpiresIn());
         return new WxaClientImpl(wxaConfig);
     }
 }

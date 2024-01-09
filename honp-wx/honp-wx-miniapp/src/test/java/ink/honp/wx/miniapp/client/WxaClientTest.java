@@ -1,6 +1,5 @@
 package ink.honp.wx.miniapp.client;
 
-import ink.honp.core.http.enums.HttpLogLevel;
 import ink.honp.core.util.JacksonUtil;
 import ink.honp.core.util.ThreadUtil;
 import ink.honp.wx.core.exception.WxException;
@@ -26,8 +25,8 @@ import java.util.Set;
 @Slf4j
 class WxaClientTest {
 
-    private static final String APPID = "xxxxxx";
-    private static final String SECRET = "xxxxx";
+    private static final String APPID = "xxxx";
+    private static final String SECRET = "xxxx";
 
     @Test
     @DisplayName("并发获取 accessToken")

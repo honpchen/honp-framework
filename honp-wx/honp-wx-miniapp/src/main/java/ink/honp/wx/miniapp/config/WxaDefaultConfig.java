@@ -1,7 +1,6 @@
 package ink.honp.wx.miniapp.config;
 
 import ink.honp.core.http.enums.HttpLogLevel;
-import ink.honp.wx.core.entity.WxTokenInfo;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
@@ -19,6 +18,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class WxaDefaultConfig implements WxaConfig {
 
     private static final Integer DEFAULT_TIMEOUT = 2 * 60;
+    private static final String DEFAULT_CLIENT_TAG = "WX MINI-APP";
 
     private final String appid;
     private final String secret;
@@ -56,11 +56,18 @@ public class WxaDefaultConfig implements WxaConfig {
         this.level = level;
     }
 
+
+    @Override
+    public String getClientTag() {
+        return DEFAULT_CLIENT_TAG;
+    }
+
     @Override
     public boolean accessTokenNotExpired() {
         return StringUtils.isNotBlank(accessToken)
                 && (accessTokenExpireTimes -  System.currentTimeMillis()) > 100;
     }
+
 
     @Override
     public Lock getAccessTokenLock() {
@@ -68,9 +75,9 @@ public class WxaDefaultConfig implements WxaConfig {
     }
 
     @Override
-    public void refreshAccessToken(WxTokenInfo tokenInfo) {
-        this.accessToken = tokenInfo.getAccessToken();
-        this.accessTokenExpireTimes = DateUtils.addSeconds(new Date(), tokenInfo.getExpiresIn()).getTime();
+    public void refreshAccessToken(String accessToken, Integer expiresIn) {
+        this.accessToken = accessToken;
+        this.accessTokenExpireTimes = DateUtils.addSeconds(new Date(), expiresIn - 10).getTime();
     }
 
     @Override

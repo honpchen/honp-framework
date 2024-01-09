@@ -1,6 +1,5 @@
 package ink.honp.wx.miniapp.constant;
 
-import ink.honp.wx.core.constant.WxUrlConstant;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -8,9 +7,9 @@ import lombok.experimental.UtilityClass;
  * date    2024/01/02 11:42
  */
 @UtilityClass
-public class WxaUrlConstant extends WxUrlConstant {
+public class WxaUrlConstant {
 
-    public static final String STABLE_TOKEN = API_BASE_URL + "/cgi-bin/stable_token";
+    public static final String API_BASE_URL = "https://api.weixin.qq.com";
 
     /**
      * 小程序登录相关 API

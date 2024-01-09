@@ -15,7 +15,9 @@
 
     <modules>
         <module>honp-wx-core</module>
+        <module>honp-wx-cgi</module>
         <module>honp-wx-miniapp</module>
+        <module>honp-wx-oa</module>
     </modules>
 
     <dependencyManagement>
@@ -23,6 +25,12 @@
             <dependency>
                 <groupId>ink.honpframework</groupId>
                 <artifactId>honp-wx-core</artifactId>
+                <version>${honp-framework.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ink.honpframework</groupId>
+                <artifactId>honp-wx-cgi</artifactId>
                 <version>${honp-framework.version}</version>
             </dependency>
         </dependencies>
