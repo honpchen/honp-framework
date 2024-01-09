@@ -1,8 +1,8 @@
 package ink.honp.wx.cgi.entity.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ink.honp.wx.core.entity.request.WxRequest;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
@@ -11,14 +11,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class WxStableAccessTokenGetRequest implements WxRequest {
-
-    private String appid;
-
-    private String secret;
-
-    @JsonProperty("grant_type")
-    private String grantType;
+@EqualsAndHashCode(callSuper = true)
+public class WxStableAccessTokenGetRequest extends WxAccessTokenRequest {
 
     /**
      * 默认使用 false。

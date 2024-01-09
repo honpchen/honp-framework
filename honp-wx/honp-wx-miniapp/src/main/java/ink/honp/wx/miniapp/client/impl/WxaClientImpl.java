@@ -62,11 +62,11 @@ public class WxaClientImpl extends WxCgiAbstractClient implements WxaClient {
 
     @Override
     public WxAccessTokenResponse doGetAccessToken() {
-        WxStableAccessTokenGetRequest tokenRequest = new WxStableAccessTokenGetRequest()
-                .setAppid(wxaConfig.getAppid())
-                .setSecret(wxaConfig.getSecret())
-                .setGrantType(WxGrantType.CLIENT_CREDENTIAL)
-                .setForceRefresh(false);
+        WxStableAccessTokenGetRequest tokenRequest = new WxStableAccessTokenGetRequest();
+        tokenRequest.setAppid(wxaConfig.getAppid());
+        tokenRequest.setSecret(wxaConfig.getSecret());
+        tokenRequest.setGrantType(WxGrantType.CLIENT_CREDENTIAL);
+        tokenRequest.setForceRefresh(false);
 
         String content = execute(getPostRequestExecutor(), WxCgiUrlConstant.STABLE_TOKEN, tokenRequest,
                 getResponseHandler(), 1, MAX_RETRY_COUNT);
