@@ -1,13 +1,13 @@
 package ink.honp.wx.miniapp.config;
 
-import ink.honp.wx.cgi.config.WxClientConfig;
+import ink.honp.wx.core.entity.WxConfig;
 
 /**
  * 微信小程序配置接口
  * @author jeff chen
  * @since 2024-01-01 16:53
  */
-public interface WxaConfig extends WxClientConfig {
+public interface WxaConfig extends WxConfig {
 
     /**
      * appid

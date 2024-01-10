@@ -3,7 +3,6 @@ package ink.honp.wx.miniapp.client;
 import ink.honp.core.util.JacksonUtil;
 import ink.honp.core.util.ThreadUtil;
 import ink.honp.wx.core.exception.WxException;
-import ink.honp.wx.miniapp.client.impl.WxaClientImpl;
 import ink.honp.wx.miniapp.config.WxaConfig;
 import ink.honp.wx.miniapp.config.WxaDefaultConfig;
 import ink.honp.wx.miniapp.entity.response.user.WxaSessionInfoResponse;
@@ -33,7 +32,7 @@ class WxaClientTest {
     void testMultiThreadGetAccessToken() {
         WxaConfig wxaConfig = new WxaDefaultConfig(APPID, SECRET);
         
-        WxaClient wxaClient = new WxaClientImpl(wxaConfig);
+        WxaClient wxaClient = new WxaOkHttpClient(wxaConfig);
 
         Set<String> accessTokens = new HashSet<>();
         List<Thread> threads = new ArrayList<>();
@@ -55,7 +54,7 @@ class WxaClientTest {
     void testGetAccessToken() {
         WxaConfig wxaConfig = new WxaDefaultConfig(APPID, SECRET);
 
-        WxaClient wxaClient = new WxaClientImpl(wxaConfig);
+        WxaClient wxaClient = new WxaOkHttpClient(wxaConfig);
         String accessToken = wxaClient.getAccessToken(false);
 
         Assertions.assertTrue(StringUtils.isNotBlank(accessToken));
@@ -69,7 +68,7 @@ class WxaClientTest {
 
         String jsCode = "0b1OWGGa18HXEG0DUmJa1jcMIh4OWGGg";
 
-        WxaClient wxaClient = new WxaClientImpl(wxaConfig);
+        WxaClient wxaClient = new WxaOkHttpClient(wxaConfig);
         WxaSessionInfoResponse sessionInfo = wxaClient.code2Session(jsCode);
 
         Assertions.assertNotNull(sessionInfo);
@@ -82,7 +81,7 @@ class WxaClientTest {
         WxaConfig wxaConfig = new WxaDefaultConfig(APPID, SECRET);
         String jsCode = "0b1OWGGa18HXEG0DUmJa1jcMIh4OWGGg";
 
-        WxaClient wxaClient = new WxaClientImpl(wxaConfig);
+        WxaClient wxaClient = new WxaOkHttpClient(wxaConfig);
         WxException wxException = Assertions.assertThrows(WxException.class, () -> wxaClient.code2Session(jsCode));
 
         log.info("WXA jsCode error [code:{}, msg:{}]", wxException.getCode(), wxException.getMessage());

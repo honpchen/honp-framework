@@ -3,7 +3,7 @@ package ink.honp.wx.miniapp.service;
 import ink.honp.core.http.enums.HttpLogLevel;
 import ink.honp.wx.cgi.entity.response.WxAccessTokenResponse;
 import ink.honp.wx.miniapp.client.WxaClient;
-import ink.honp.wx.miniapp.client.impl.WxaClientImpl;
+import ink.honp.wx.miniapp.client.WxaOkHttpClient;
 import ink.honp.wx.miniapp.config.WxaConfig;
 import ink.honp.wx.miniapp.config.WxaDefaultConfig;
 
@@ -31,6 +31,6 @@ public class WxaServiceTest {
         tokenInfo.setExpiresIn(EXPIRES_IN);
 
         wxaConfig.refreshAccessToken(tokenInfo.getAccessToken(), tokenInfo.getExpiresIn());
-        return new WxaClientImpl(wxaConfig);
+        return new WxaOkHttpClient(wxaConfig);
     }
 }

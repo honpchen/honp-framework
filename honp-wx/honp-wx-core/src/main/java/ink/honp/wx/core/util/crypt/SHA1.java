@@ -1,4 +1,4 @@
-package ink.honp.wx.core.crypt;
+package ink.honp.wx.core.util.crypt;
 
 import ink.honp.core.constant.SymbolicConstant;
 import lombok.experimental.UtilityClass;

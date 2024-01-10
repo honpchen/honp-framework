@@ -1,7 +1,7 @@
 package ink.honp.wx.oa.client;
 
 import ink.honp.core.http.enums.HttpLogLevel;
-import ink.honp.wx.oa.client.impl.WxoaClientImpl;
+import ink.honp.wx.oa.client.impl.WxoaOkHttpClient;
 import ink.honp.wx.oa.config.WxoaConfig;
 import ink.honp.wx.oa.config.WxoaDefaultConfig;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ class WxoaClientTest {
     @Test
     void testGetAccessToken() {
         WxoaConfig wxoaConfig = new WxoaDefaultConfig(APP_ID, SECRET, HttpLogLevel.BODY);
-        WxoaClient wxoaClient = new WxoaClientImpl(wxoaConfig);
+        WxoaClient wxoaClient = new WxoaOkHttpClient(wxoaConfig);
 
         String accessToken = wxoaClient.getAccessToken(false);
         Assertions.assertNotNull(accessToken);

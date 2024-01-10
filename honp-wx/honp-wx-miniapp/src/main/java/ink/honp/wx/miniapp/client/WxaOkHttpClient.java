@@ -1,8 +1,9 @@
-package ink.honp.wx.miniapp.client.impl;
+package ink.honp.wx.miniapp.client;
 
 import ink.honp.core.util.JacksonUtil;
-import ink.honp.wx.cgi.client.impl.WxCgiAbstractClient;
+import ink.honp.wx.cgi.client.impl.WxCgiAbstractOkHttpClient;
 import ink.honp.wx.cgi.constant.WxCgiUrlConstant;
+import ink.honp.wx.core.client.WxAbstractOkHttpClient;
 import ink.honp.wx.core.constant.WxGrantType;
 import ink.honp.wx.cgi.entity.response.WxAccessTokenResponse;
 import ink.honp.wx.cgi.entity.request.WxStableAccessTokenGetRequest;
@@ -15,6 +16,8 @@ import ink.honp.wx.miniapp.entity.response.user.WxaSessionInfoResponse;
 import ink.honp.wx.miniapp.factory.WxaServiceFactory;
 import ink.honp.wx.miniapp.service.WxaService;
 import lombok.extern.slf4j.Slf4j;
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -22,13 +25,15 @@ import org.apache.commons.lang3.StringUtils;
  * @since 2024-01-01 17:45
  */
 @Slf4j
-public class WxaClientImpl extends WxCgiAbstractClient implements WxaClient {
+public class WxaOkHttpClient extends WxAbstractOkHttpClient implements WxaClient<Response, OkHttpClient> {
+
+    private static final String DEFAULT_TAG = "WX MINI-APP";
 
     private final WxaConfig wxaConfig;
     private final WxaServiceFactory wxaServiceFactory;
 
-    public WxaClientImpl(WxaConfig wxaConfig) {
-        super(wxaConfig);
+    public WxaOkHttpClient(WxaConfig wxaConfig) {
+        super(DEFAULT_TAG, wxaConfig);
         this.wxaConfig = wxaConfig;
         wxaServiceFactory = new WxaServiceFactory(this);
     }
@@ -44,7 +49,7 @@ public class WxaClientImpl extends WxCgiAbstractClient implements WxaClient {
                 wxaConfig.getAppid(), wxaConfig.getSecret(), jsCode);
 
         // jsCode 不能重复使用，禁用重试
-        String content = execute(getGetRequestExecutor(), url,
+        String content = execute(getSimpleGetRequestExecutor(), url,
                 null, getResponseHandler(), 0, -1);
         if (StringUtils.isNotBlank(content)) {
             return JacksonUtil.toBean(content, WxaSessionInfoResponse.class);
@@ -74,6 +79,10 @@ public class WxaClientImpl extends WxCgiAbstractClient implements WxaClient {
             return JacksonUtil.toBean(content, WxAccessTokenResponse.class);
         }
         throw new WxException(WxError.GET_ACCESS_TOKEN_ERROR);
+    }
+    @Override
+    public void refreshAccessToken() {
+
     }
 
 

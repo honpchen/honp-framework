@@ -1,7 +1,7 @@
 package ink.honp.wx.oa.client.impl;
 
 import ink.honp.core.util.JacksonUtil;
-import ink.honp.wx.cgi.client.impl.WxCgiAbstractClient;
+import ink.honp.wx.cgi.client.impl.WxCgiAbstractOkHttpClient;
 import ink.honp.wx.cgi.constant.WxCgiUrlConstant;
 import ink.honp.wx.cgi.entity.request.WxStableAccessTokenGetRequest;
 import ink.honp.wx.cgi.entity.response.WxAccessTokenResponse;
@@ -20,12 +20,12 @@ import org.apache.commons.lang3.StringUtils;
  * @since 2024-01-01 17:45
  */
 @Slf4j
-public class WxoaClientImpl extends WxCgiAbstractClient implements WxoaClient {
+public class WxoaOkHttpClient extends WxCgiAbstractOkHttpClient implements WxoaClient {
 
     private final WxoaConfig wxoaConfig;
     private final WxoaServiceFactory wxoaServiceFactory;
 
-    public WxoaClientImpl(WxoaConfig wxoaConfig) {
+    public WxoaOkHttpClient(WxoaConfig wxoaConfig) {
         super(wxoaConfig);
         this.wxoaConfig = wxoaConfig;
         this.wxoaServiceFactory = new WxoaServiceFactory(this);

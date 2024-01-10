@@ -33,11 +33,11 @@ public class WxaDefaultConfig implements WxaConfig {
     private final ReentrantLock accessTokenLock = new ReentrantLock();
 
     public WxaDefaultConfig (String appid, String secret) {
-        this(appid, secret, null, null);
+        this(appid, secret, DEFAULT_TIMEOUT, HttpLogLevel.BASIC);
     }
 
-    public WxaDefaultConfig (String appid, String secret, HttpLogLevel level) {
-        this(appid, secret, null, null, DEFAULT_TIMEOUT, level);
+    public WxaDefaultConfig (String appid, String secret, Integer timeout, HttpLogLevel level) {
+        this(appid, secret, null, null, timeout, level);
     }
 
     public WxaDefaultConfig (String appid, String secret, String token, String encodingAesKey) {
@@ -56,11 +56,6 @@ public class WxaDefaultConfig implements WxaConfig {
         this.level = level;
     }
 
-
-    @Override
-    public String getClientTag() {
-        return DEFAULT_CLIENT_TAG;
-    }
 
     @Override
     public boolean accessTokenNotExpired() {

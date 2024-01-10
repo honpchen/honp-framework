@@ -1,6 +1,5 @@
 package ink.honp.wx.miniapp.client;
 
-import ink.honp.wx.cgi.client.WxCgiClient;
 import ink.honp.wx.core.client.WxClient;
 import ink.honp.wx.miniapp.config.WxaConfig;
 import ink.honp.wx.miniapp.entity.response.user.WxaSessionInfoResponse;
@@ -11,7 +10,7 @@ import ink.honp.wx.miniapp.service.WxaService;
  * @author jeff chen
  * @since 2024-01-01 17:41
  */
-public interface WxaClient extends WxCgiClient {
+public interface WxaClient<R, H> extends WxClient<R, H> {
 
     /**
      * 获取小程序配置

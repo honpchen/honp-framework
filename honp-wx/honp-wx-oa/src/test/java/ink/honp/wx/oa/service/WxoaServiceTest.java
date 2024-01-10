@@ -2,7 +2,7 @@ package ink.honp.wx.oa.service;
 
 import ink.honp.core.http.enums.HttpLogLevel;
 import ink.honp.wx.oa.client.WxoaClient;
-import ink.honp.wx.oa.client.impl.WxoaClientImpl;
+import ink.honp.wx.oa.client.impl.WxoaOkHttpClient;
 import ink.honp.wx.oa.config.WxoaConfig;
 import ink.honp.wx.oa.config.WxoaDefaultConfig;
 
@@ -17,6 +17,6 @@ public class WxoaServiceTest {
 
         WxoaConfig wxoaConfig = new WxoaDefaultConfig("appid", "secret", HttpLogLevel.BODY);
         wxoaConfig.refreshAccessToken(accessToken, 7200);
-        return new WxoaClientImpl(wxoaConfig);
+        return new WxoaOkHttpClient(wxoaConfig);
     }
 }

@@ -4,8 +4,7 @@ import ink.honp.core.constant.SymbolicConstant;
 import ink.honp.core.util.ThreadUtil;
 import ink.honp.wx.cgi.client.WxCgiClient;
 import ink.honp.wx.cgi.config.WxClientConfig;
-import ink.honp.wx.core.client.impl.WxAbstractClientImpl;
-import ink.honp.wx.core.constant.WxConstant;
+import ink.honp.wx.core.client.WxAbstractOkHttpClient;
 import ink.honp.wx.cgi.entity.response.WxAccessTokenResponse;
 import ink.honp.wx.core.exception.WxError;
 import ink.honp.wx.core.exception.WxException;
@@ -24,7 +23,7 @@ import java.util.concurrent.locks.Lock;
  * date    2024/01/09 11:19
  */
 @Slf4j
-public abstract class WxCgiAbstractClient extends WxAbstractClientImpl implements WxCgiClient {
+public abstract class WxCgiAbstractOkHttpClient extends WxAbstractOkHttpClient implements WxCgiClient {
 
     public static final int MAX_RETRY_COUNT = 3;
     private static final long LOCK_TIMEOUT_MS = 100;
@@ -33,7 +32,7 @@ public abstract class WxCgiAbstractClient extends WxAbstractClientImpl implement
     private final String clientTag;
     private final WxClientConfig config;
 
-    protected WxCgiAbstractClient(WxClientConfig config) {
+    protected WxCgiAbstractOkHttpClient(WxClientConfig config) {
         super(config.getClientTag(), config.getTimeout(), config.getLevel());
 
         this.clientTag = config.getClientTag();

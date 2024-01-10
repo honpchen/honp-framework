@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>ink.honpframework</groupId>
-            <artifactId>honp-wx-cgi</artifactId>
+            <artifactId>honp-wx-core</artifactId>
         </dependency>
     </dependencies>
 
